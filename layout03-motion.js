@@ -286,6 +286,7 @@
     if('ResizeObserver' in window){
       stickyResizeObserver=new ResizeObserver(measureStickyComparison);
       stickyResizeObserver.observe(data.table);
+      if(header)stickyResizeObserver.observe(header);
     }
     syncStickyComparison();
   }
