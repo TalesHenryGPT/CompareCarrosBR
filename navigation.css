@@ -5,3 +5,7 @@
 .mainnav a:focus-visible{outline:2px solid #f6bd00;outline-offset:6px;border-radius:2px}
 #inicio,#comparar,#rankings,#sobre,#contato{scroll-margin-top:118px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.mainnav a,.mainnav a::after{transition:none}}
+.siteFooter{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.siteFooter a{color:#0a5b2b;font-weight:750;text-decoration:none;transition:color .28s ease}
+.siteFooter a:hover,.siteFooter a:focus-visible{color:#f6bd00}
+@media(max-width:680px){.siteFooter{flex-direction:column;gap:8px}}
