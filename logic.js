@@ -9,7 +9,7 @@ const escapeHtml=s=>String(s).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>
 const normalizeText=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 const logoInitials=brand=>brand.split(/\s+/).map(w=>w[0]).join('').slice(0,3).toUpperCase();
 function brandLogoUrl(brand){const file=BRAND_LOGO_FILES[brand];return file?(file.startsWith('http')?file:BRAND_LOGO_BASE+file):''}
-function brandLogoMarkup(brand){const url=brandLogoUrl(brand),initials=logoInitials(brand);return `<span class="brandLogo${url?'':' fallback'}" aria-hidden="true">${url?`<img src="${escapeHtml(url)}" alt="" loading="lazy" onerror="this.parentElement.classList.add('fallback')">`:''}<span>${escapeHtml(initials)}</span></span>`}
+function brandLogoMarkup(brand){const initials=logoInitials(brand);return `<span class="brandLogo fallback" aria-hidden="true"><span>${escapeHtml(initials)}</span></span>`}
 function placeholderFor(i){return i<2?'Selecione um modelo':'Selecione um modelo (opcional)'}
 function opts(i){let h=`<option value="">${placeholderFor(i)}</option>`;for(const b of brands){h+=`<optgroup label="${escapeHtml(b)}">`;cars.forEach((c,j)=>{if(c.brand===b)h+=`<option value="${j}">${escapeHtml(c.model)} — ${escapeHtml(c.type)} — 0 km • ${c.yearBase} — ${fmt(priceForMode(c))}</option>`});h+='</optgroup>'}return h}
 function closeModelPickers(except){document.querySelectorAll('.modelPicker.open').forEach(p=>{if(p!==except){p.classList.remove('open');p.querySelector('.modelPickerButton').setAttribute('aria-expanded','false');p.querySelector('.modelPickerPanel').hidden=true}})}
