@@ -1,4 +1,4 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#ffffff"><title>CompareCarrosBR — Layout 03 Fluid Test</title><meta name="description" content="Compare carros 0 km por custo total de propriedade, com premissas regionalizadas e visualização dinâmica."><link rel="stylesheet" href="styles.css?v=4"><link rel="stylesheet" href="regional.css"><link rel="stylesheet" href="navigation.css?v=4"><link rel="stylesheet" href="layout03-fluid.css?v=7"></head><body class="layout03">
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#ffffff"><title>CompareCarrosBR — Layout 03 Fluid Test</title><meta name="description" content="Compare carros 0 km por custo total de propriedade, com premissas regionalizadas e visualização dinâmica."><link rel="stylesheet" href="styles.css?v=4"><link rel="stylesheet" href="regional.css"><link rel="stylesheet" href="navigation.css?v=4"><link rel="stylesheet" href="layout03-fluid.css?v=8"></head><body class="layout03">
 <header class="topbar"><div class="navwrap"><a class="brand" href="#inicio" aria-label="Compare Carros Brasil"><span class="ccmark">CC</span><span class="brandwords"><strong>COMPARE CARROS</strong><em>BRASIL</em></span></a><nav class="mainnav"><a class="active" href="#inicio">Início</a><a href="#comparar">Comparar</a><a href="#rankings">Rankings</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a></nav><a class="saved" href="#comparar"><span>▱</span> Meus Comparativos</a></div></header>
 <main><section id="inicio" class="hero" aria-label="Compare Carros Brasil">
 <div class="heroContent">
@@ -13,6 +13,25 @@
 <defs>
 <clipPath id="suvDriverWindowClip"><path d="M449 67H497C521 67 540 76 556 95L607 154H449V67Z"/></clipPath>
 <clipPath id="suvRearWindowClip"><path d="M263 154L316 91C330 74 350 67 378 67H432V154H263Z"/></clipPath>
+<radialGradient id="animalBlack3D" cx="30%" cy="18%" r="90%">
+<stop offset="0%" stop-color="#43584E"/><stop offset="38%" stop-color="#16231D"/><stop offset="100%" stop-color="#020705"/>
+</radialGradient>
+<linearGradient id="animalWhite3D" x1="18%" y1="8%" x2="82%" y2="94%">
+<stop offset="0%" stop-color="#FFFFFF"/><stop offset="45%" stop-color="#F4F8F3"/><stop offset="78%" stop-color="#BCCBC1"/><stop offset="100%" stop-color="#76897D"/>
+</linearGradient>
+<radialGradient id="dogEye3D" cx="34%" cy="28%" r="72%">
+<stop offset="0%" stop-color="#E9FBFF"/><stop offset="28%" stop-color="#72D9FF"/><stop offset="70%" stop-color="#168BCB"/><stop offset="100%" stop-color="#063C6A"/>
+</radialGradient>
+<radialGradient id="catEye3D" cx="34%" cy="28%" r="72%">
+<stop offset="0%" stop-color="#FFF8AF"/><stop offset="35%" stop-color="#FFD43B"/><stop offset="100%" stop-color="#A76C00"/>
+</radialGradient>
+<linearGradient id="tongue3D" x1="20%" y1="5%" x2="80%" y2="100%">
+<stop offset="0%" stop-color="#FFD0D7"/><stop offset="50%" stop-color="#F18E9E"/><stop offset="100%" stop-color="#A63F58"/>
+</linearGradient>
+<filter id="animalDepth" x="-45%" y="-45%" width="190%" height="200%">
+<feDropShadow dx="1.8" dy="3.2" stdDeviation="2.3" flood-color="#00140C" flood-opacity=".62"/>
+<feDropShadow dx="-1" dy="-1" stdDeviation="1.1" flood-color="#D9FF6D" flood-opacity=".22"/>
+</filter>
 </defs>
 <g class="suvMotionGroup">
 <path class="suvTrail" d="M18 301H112M5 323H92M730 338H808" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
@@ -21,41 +40,41 @@
 <path class="suvWindow" d="M263 154L316 91C330 74 350 67 378 67H432V154H263Z"/>
 <path class="suvWindow" d="M449 67H497C521 67 540 76 556 95L607 154H449V67Z"/>
 <g class="suvRearDog" clip-path="url(#suvRearWindowClip)" aria-hidden="true">
-<path class="suvDogBody" d="M313 169C317 143 333 132 359 132C387 132 404 145 408 169H313Z" fill="#0A120F" stroke="currentColor" stroke-width="2.5"/>
-<path class="suvDogChest" d="M344 134C349 146 359 153 370 134L382 169H333L344 134Z" fill="#FFFDF5"/>
+<path class="suvDogBody" d="M313 169C317 143 333 132 359 132C387 132 404 145 408 169H313Z" fill="url(#animalBlack3D)" stroke="currentColor" stroke-width="2.5"/>
+<path class="suvDogChest" d="M344 134C349 146 359 153 370 134L382 169H333L344 134Z" fill="url(#animalWhite3D)"/>
 <g class="suvDogHeadTurn">
-<path class="suvDogHead" d="M320 111L325 78L346 95C353 91 365 91 374 95L396 78L400 112C402 133 386 146 360 146C335 146 319 133 320 111Z" fill="#0A120F" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-<path class="suvDogBlaze" d="M360 91C351 101 350 113 354 121C358 129 357 138 351 145C365 148 378 143 384 133C376 129 371 122 372 114C373 103 368 96 360 91Z" fill="#FFFDF5"/>
-<path class="suvDogCheeks" d="M333 122C338 117 346 119 351 128C348 138 339 141 330 135L333 122ZM372 127C378 118 388 117 394 123L393 136C384 141 376 138 372 127Z" fill="#FFFDF5"/>
-<ellipse class="suvDogMuzzle" cx="363" cy="129" rx="20" ry="13" fill="#FFFDF5"/>
+<path class="suvDogHead" d="M320 111L325 78L346 95C353 91 365 91 374 95L396 78L400 112C402 133 386 146 360 146C335 146 319 133 320 111Z" fill="url(#animalBlack3D)" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path class="suvAnimalFurGlow" d="M329 89C338 98 341 105 340 116M390 89C382 98 380 106 381 116" stroke="rgba(255,255,255,.28)" stroke-width="2.2" stroke-linecap="round"/>
+<path class="suvDogBlaze" d="M360 91C351 101 350 113 354 121C358 129 357 138 351 145C365 148 378 143 384 133C376 129 371 122 372 114C373 103 368 96 360 91Z" fill="url(#animalWhite3D)"/>
+<path class="suvDogCheeks" d="M333 122C338 117 346 119 351 128C348 138 339 141 330 135L333 122ZM372 127C378 118 388 117 394 123L393 136C384 141 376 138 372 127Z" fill="url(#animalWhite3D)"/>
+<ellipse class="suvDogMuzzle" cx="363" cy="129" rx="20" ry="13" fill="url(#animalWhite3D)"/>
 <g class="suvDogEyes">
-<ellipse cx="348" cy="112" rx="6" ry="7" fill="#79D7FF"/>
-<ellipse cx="375" cy="112" rx="6" ry="7" fill="#79D7FF"/>
+<ellipse cx="348" cy="112" rx="6" ry="7" fill="url(#dogEye3D)"/>
+<ellipse cx="375" cy="112" rx="6" ry="7" fill="url(#dogEye3D)"/>
 <ellipse class="suvDogPupil" cx="346" cy="112" rx="2.2" ry="4.7" fill="#06110D"/>
-<ellipse class="suvDogPupil" cx="373" cy="112" rx="2.2" ry="4.7" fill="#06110D"/>
+<ellipse class="suvDogPupil" cx="373" cy="112" rx="2.2" ry="4.7" fill="#06110D"/><circle class="suvEyeShine" cx="350" cy="109" r="1.5" fill="#FFFFFF"/><circle class="suvEyeShine" cx="377" cy="109" r="1.5" fill="#FFFFFF"/>
 </g>
-<path class="suvDogNose" d="M356 124Q363 120 370 124L363 131L356 124Z" fill="#07100C"/>
+<path class="suvDogNose" d="M356 124Q363 120 370 124L363 131L356 124Z" fill="#07100C"/><path class="suvNoseShine" d="M359 124Q362 122 365 123" stroke="rgba(255,255,255,.62)" stroke-width="1.2" stroke-linecap="round"/>
 <path class="suvDogSmile" d="M363 131Q356 137 351 132M363 131Q370 138 377 132" stroke="#07100C" stroke-width="2" stroke-linecap="round"/>
-<path class="suvDogTongue" d="M356 135C358 132 368 132 371 135V143C370 151 358 151 357 143L356 135Z" fill="#F18E9E" stroke="#07100C" stroke-width="1.3"/>
+<path class="suvDogTongue" d="M356 135C358 132 368 132 371 135V143C370 151 358 151 357 143L356 135Z" fill="url(#tongue3D)" stroke="#07100C" stroke-width="1.3"/>
 </g>
 </g>
 <g class="suvDriverCat" clip-path="url(#suvDriverWindowClip)" aria-hidden="true">
-<path class="suvCatBody" d="M481 169C482 143 495 132 519 131C545 130 561 144 566 169H481Z" fill="#0B1511" stroke="currentColor" stroke-width="2.5"/>
-<path class="suvCatChest" d="M510 134C515 143 522 148 532 134L541 165H501L510 134Z" fill="#FFFDF5"/>
+<path class="suvCatBody" d="M481 169C482 143 495 132 519 131C545 130 561 144 566 169H481Z" fill="url(#animalBlack3D)" stroke="currentColor" stroke-width="2.5"/>
+<path class="suvCatChest" d="M510 134C515 143 522 148 532 134L541 165H501L510 134Z" fill="url(#animalWhite3D)"/>
 <g class="suvCatHeadTurn">
-<path class="suvCatHead" d="M491 111L496 82L514 96C521 92 531 92 538 96L554 83L557 112C558 130 546 141 525 141C504 141 491 130 491 111Z" fill="#0A120F" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-<path class="suvCatBlaze" d="M524 94C518 103 519 114 523 121C526 126 526 133 523 140C533 141 541 137 545 130C539 127 536 121 537 115C538 106 533 99 524 94Z" fill="#FFFDF5"/>
-<ellipse class="suvCatMuzzle" cx="530" cy="127" rx="16" ry="11" fill="#FFFDF5"/>
+<path class="suvCatHead" d="M491 111L496 82L514 96C521 92 531 92 538 96L554 83L557 112C558 130 546 141 525 141C504 141 491 130 491 111Z" fill="url(#animalBlack3D)" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path class="suvAnimalFurGlow" d="M499 91C507 98 509 106 508 116M550 92C544 99 543 106 544 115" stroke="rgba(255,255,255,.26)" stroke-width="2" stroke-linecap="round"/>
+<path class="suvCatBlaze" d="M524 94C518 103 519 114 523 121C526 126 526 133 523 140C533 141 541 137 545 130C539 127 536 121 537 115C538 106 533 99 524 94Z" fill="url(#animalWhite3D)"/>
+<ellipse class="suvCatMuzzle" cx="530" cy="127" rx="16" ry="11" fill="url(#animalWhite3D)"/>
 <g class="suvCatEyes">
-<ellipse cx="514" cy="112" rx="5.5" ry="6.5" fill="#FFD43B"/>
-<ellipse cx="537" cy="112" rx="5.5" ry="6.5" fill="#FFD43B"/>
+<ellipse cx="514" cy="112" rx="5.5" ry="6.5" fill="url(#catEye3D)"/>
+<ellipse cx="537" cy="112" rx="5.5" ry="6.5" fill="url(#catEye3D)"/>
 <ellipse class="suvCatPupil" cx="517" cy="112" rx="2" ry="4.5" fill="#07100C"/>
-<ellipse class="suvCatPupil" cx="540" cy="112" rx="2" ry="4.5" fill="#07100C"/>
+<ellipse class="suvCatPupil" cx="540" cy="112" rx="2" ry="4.5" fill="#07100C"/><circle class="suvEyeShine" cx="516" cy="109" r="1.3" fill="#FFFFFF"/><circle class="suvEyeShine" cx="539" cy="109" r="1.3" fill="#FFFFFF"/>
 </g>
-<path class="suvCatNose" d="M532 123L538 125L533 130Z" fill="#EFA0A7"/>
+<path class="suvCatNose" d="M532 123L538 125L533 130Z" fill="#EFA0A7"/><circle class="suvNoseShine" cx="534" cy="125" r=".8" fill="#FFFFFF"/>
 <path class="suvCatWhiskers" d="M538 129L560 126M539 133L563 134M515 129L497 126M515 133L497 137" stroke="#FFFDF5" stroke-width="1.8" stroke-linecap="round"/>
 </g>
-<path class="suvCatPaw" d="M540 151C543 144 553 144 556 151V159H539L540 151Z" fill="#FFFDF5" stroke="currentColor" stroke-width="1.5"/>
+<path class="suvCatPaw" d="M540 151C543 144 553 144 556 151V159H539L540 151Z" fill="url(#animalWhite3D)" stroke="currentColor" stroke-width="1.5"/>
 </g>
 <path class="suvDetail" d="M434 69V154M239 169H657M364 171V188M364 207V241M514 171V188M514 207V241M344 197H374M493 197H523" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
 <path class="suvShoulder" d="M111 183C175 169 237 166 305 166H674" stroke="rgba(217,255,109,.55)" stroke-width="2.5" stroke-linecap="round"/>
