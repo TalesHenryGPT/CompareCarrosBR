@@ -222,40 +222,82 @@ body.layout04{
 .layout04 .chartLegend span::before{content:"";display:inline-block;width:7px;height:7px;margin-right:5px;border-radius:50%;background:var(--legend)}
 
 .comparisonStickyBar{
-  position:fixed;z-index:29;overflow:hidden;border:1px solid rgba(255,255,255,.52);border-radius:18px;
-  background:rgba(234,242,233,.9);box-shadow:0 18px 48px rgba(6,58,41,.18),0 1px 0 rgba(255,255,255,.7) inset;
+  position:fixed;z-index:29;overflow:hidden;padding:6px 2px;border:1px solid rgba(255,255,255,.58);border-radius:22px;
+  background:rgba(244,240,231,.82);box-shadow:0 18px 48px rgba(6,58,41,.2),0 1px 0 rgba(255,255,255,.76) inset;
   backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);
   opacity:0;visibility:hidden;transform:translateY(-12px) scale(.985);transform-origin:top center;
   transition:opacity .26s ease,transform .34s cubic-bezier(.2,.8,.2,1),visibility .26s ease;
   pointer-events:none;
 }
 .comparisonStickyBar.is-active{opacity:1;visibility:visible;transform:none}
-.comparisonStickyTable{margin:0;border-collapse:separate;border-spacing:0;table-layout:fixed;background:transparent}
+.comparisonStickyTable{margin:0;border-collapse:separate;border-spacing:12px 0;table-layout:fixed;background:transparent}
 .comparisonStickyTable th{
-  position:relative!important;left:auto!important;top:auto!important;padding:11px 14px!important;border:0!important;
-  border-right:1px solid rgba(6,58,41,.09)!important;background:transparent!important;color:var(--l3-deep)!important;
+  position:relative!important;left:auto!important;top:auto!important;padding:11px 14px!important;
+  border:1px solid rgba(255,255,255,.13)!important;border-radius:14px!important;
+  background:rgba(6,58,41,.9)!important;color:rgba(255,255,255,.94)!important;
+  box-shadow:0 7px 18px rgba(6,58,41,.14),inset 0 1px 0 rgba(255,255,255,.08);
   text-align:left!important;vertical-align:middle;font-family:var(--l3-display);white-space:normal;
 }
-.comparisonStickyTable th:first-child{background:rgba(255,254,250,.68)!important}
-.comparisonStickyTable th:last-child{border-right:0!important}
+.comparisonStickyTable th:first-child{
+  border-color:rgba(6,58,41,.09)!important;background:rgba(255,254,250,.78)!important;color:var(--l3-deep)!important;
+}
+.comparisonStickyTable th:last-child{border-right:1px solid rgba(255,255,255,.13)!important}
 .stickyGuideTitle,.stickyModelName{display:block;overflow:hidden;text-overflow:ellipsis}
 .stickyGuideTitle{font-size:12px;font-weight:820;letter-spacing:-.015em}
 .stickyModelIndex{
   display:inline-grid;place-items:center;float:left;width:25px;height:25px;margin:1px 8px 0 0;border-radius:8px;
-  background:var(--l3-deep);color:var(--l3-yellow);font-size:9px;font-weight:850;letter-spacing:.05em;
+  background:var(--l3-yellow);color:var(--l3-deep);font-size:9px;font-weight:850;letter-spacing:.05em;
 }
 .stickyModelName{display:flex;align-items:center;min-height:27px;padding-top:0;font-size:11px;font-weight:790;line-height:1.18}
 
-.layout04 .tablewrap{border-color:rgba(16,34,26,.1);border-radius:26px;box-shadow:0 22px 65px rgba(22,55,38,.1)}
-.layout04 table{background:#fffefa}
-.layout04 th,.layout04 td{padding:16px 14px}
-.layout04 thead th{background:#eaf2e9;color:var(--l3-deep);font-family:var(--l3-display);font-size:12px}
-.layout04 th:first-child,.layout04 td:first-child{background:#fffefa}
-.layout04 tbody tr{transition:opacity .5s ease,transform .5s ease,background .25s ease}
-.layout04 tbody tr:hover td{background:#f4f7f1}
-.layout04 tbody tr.row-motion{opacity:0;transform:translateY(12px)}
-.layout04 tbody tr.row-motion.is-visible{opacity:1;transform:none}
-.layout04 .best{position:relative;background:#fff3b8!important;color:#2a481f!important;box-shadow:inset 0 0 0 1px rgba(224,171,0,.24);animation:l3Best 1.8s ease 2}
+.layout04 .tablewrap{
+  --l4-column-gap:12px;
+  padding:8px 2px 14px;border-color:rgba(16,34,26,.1);border-radius:26px;
+  background:linear-gradient(145deg,rgba(255,254,250,.9),rgba(234,242,233,.72));
+  box-shadow:0 22px 65px rgba(22,55,38,.1)
+}
+.layout04 .tablewrap table{
+  border-collapse:separate;border-spacing:var(--l4-column-gap) 0;background:transparent
+}
+.layout04 .tablewrap th,.layout04 .tablewrap td{
+  padding:16px 14px;background-clip:padding-box;
+  transition:background-color .28s ease,color .28s ease,box-shadow .28s ease
+}
+.layout04 .tablewrap thead th{
+  font-family:var(--l3-display);font-size:12px
+}
+.layout04 .tablewrap thead th:not(:first-child){
+  border:1px solid rgba(255,255,255,.13);border-bottom-color:rgba(255,255,255,.08);border-radius:20px 20px 0 0;
+  background:rgba(6,58,41,.9);color:rgba(255,255,255,.96);
+  box-shadow:8px 0 22px rgba(6,58,41,.08),-8px 0 22px rgba(6,58,41,.06),inset 0 1px 0 rgba(255,255,255,.08)
+}
+.layout04 .tablewrap tbody td:not(:first-child){
+  border-right:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.075);border-left:1px solid rgba(255,255,255,.1);
+  background:rgba(6,58,41,.86);color:rgba(255,255,255,.88);
+  box-shadow:8px 0 22px rgba(6,58,41,.055),-8px 0 22px rgba(6,58,41,.04)
+}
+.layout04 .tablewrap tbody tr:last-child td:not(:first-child){
+  border-bottom:1px solid rgba(255,255,255,.12);border-radius:0 0 20px 20px;
+  box-shadow:8px 10px 22px rgba(6,58,41,.08),-8px 10px 22px rgba(6,58,41,.06),inset 0 -1px 0 rgba(255,255,255,.06)
+}
+.layout04 .tablewrap th:first-child,.layout04 .tablewrap td:first-child{
+  border-right:0;background:rgba(255,254,250,.92);color:#596474
+}
+.layout04 .tablewrap thead th:first-child{border-radius:18px 18px 0 0;color:var(--l3-deep)}
+.layout04 .tablewrap tbody tr:last-child td:first-child{border-radius:0 0 18px 18px}
+.layout04 .tablewrap tbody tr{transition:opacity .5s ease,transform .5s ease}
+.layout04 .tablewrap tbody tr:hover td:first-child{background:#f4f7f1}
+.layout04 .tablewrap tbody tr:hover td:not(:first-child){background:rgba(9,82,53,.94);color:#fff}
+.layout04 .tablewrap tbody tr.row-motion{opacity:0;transform:translateY(12px)}
+.layout04 .tablewrap tbody tr.row-motion.is-visible{opacity:1;transform:none}
+.layout04 .tablewrap td:not(:first-child) .tag{background:rgba(217,255,109,.92);color:var(--l3-deep)}
+.layout04 .tablewrap td:not(:first-child) .saving{color:var(--l3-lime)}
+.layout04 .tablewrap td:not(:first-child) a{color:var(--l3-lime)}
+.layout04 .tablewrap .best{
+  position:relative;background:rgba(255,212,59,.22)!important;color:#fff!important;
+  box-shadow:inset 0 0 0 1px rgba(255,212,59,.58),0 0 18px rgba(255,212,59,.14)!important;
+  animation:l3Best 1.8s ease 2
+}
 .layout04 .maintenanceNotes{border:0;border-radius:20px;background:#eef5ed;padding:20px 22px}
 .layout04 .notes{margin-top:34px;padding:30px;border:0;border-radius:28px;background:var(--l3-deep);color:#fff;box-shadow:0 24px 65px rgba(6,58,41,.18)}
 .layout04 .notes h2{color:var(--l3-yellow);font-family:var(--l3-display);font-size:30px;letter-spacing:-.04em}
@@ -327,6 +369,8 @@ body.layout04{
   .layout04 .legalPanel{grid-template-columns:1fr;gap:28px;padding:28px}
 }
 @media(max-width:680px){
+  .layout04 .tablewrap{--l4-column-gap:8px}
+  .comparisonStickyTable{border-spacing:8px 0}
   .layout04 .navwrap{padding:10px 12px;gap:10px}
   .layout04 .brandwords strong{font-size:14px}.layout04 .brandwords em{font-size:9px}
   .layout04 .mainnav{justify-content:flex-start;padding:5px;gap:4px;scrollbar-width:none}
