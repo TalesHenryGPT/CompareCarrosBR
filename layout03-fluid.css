@@ -252,6 +252,14 @@ body.layout03{
 .layout03 .notes{margin-top:34px;padding:30px;border:0;border-radius:28px;background:var(--l3-deep);color:#fff;box-shadow:0 24px 65px rgba(6,58,41,.18)}
 .layout03 .notes h2{color:var(--l3-yellow);font-family:var(--l3-display);font-size:30px;letter-spacing:-.04em}
 .layout03 .notes p,.layout03 .notes ul{color:rgba(255,255,255,.73);font-size:14px}
+.layout03 .notes .tcoFormula{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:5px 8px;margin:20px 0 0;padding:16px 18px;
+  border:1px solid rgba(255,212,59,.34);border-radius:16px;background:rgba(255,255,255,.07);
+  color:#fff;font-family:var(--l3-display);font-size:clamp(13px,1.2vw,16px);font-weight:650;
+  line-height:1.55;letter-spacing:-.015em;overflow-wrap:anywhere
+}
+.layout03 .notes .tcoFormula strong{color:var(--l3-yellow);font-size:1.05em}
+.layout03 .notes .tcoFormula span{color:rgba(255,255,255,.92)}
 .layout03 .mini,.layout03 .contact{border:1px solid rgba(16,34,26,.08);border-radius:18px;background:rgba(255,254,250,.72)}
 
 .layout03 .legalPanel{display:grid;grid-template-columns:.75fr 1.25fr;gap:46px;margin-top:18px;padding:38px;border:1px solid rgba(16,34,26,.1);border-radius:28px;background:#fffefa;box-shadow:0 20px 60px rgba(22,55,38,.07)}
