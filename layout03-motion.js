@@ -200,6 +200,100 @@
     requestAnimationFrame(()=>requestAnimationFrame(()=>section.classList.add('is-live')));
   }
 
+  let stickyComparison;
+  let stickyResizeObserver;
+  let stickyFrame;
+
+  function removeStickyComparison(){
+    stickyResizeObserver?.disconnect();
+    stickyResizeObserver=null;
+    stickyComparison?.shell.remove();
+    stickyComparison=null;
+  }
+
+  function measureStickyComparison(){
+    if(!stickyComparison)return;
+    const {table,sourceTable,sourceCells,cloneCells}=stickyComparison;
+    sourceCells.forEach((cell,index)=>{
+      const width=cell.getBoundingClientRect().width;
+      const clone=cloneCells[index];
+      clone.style.width=`${width}px`;
+      clone.style.minWidth=`${width}px`;
+      clone.style.maxWidth=`${width}px`;
+    });
+    const tableWidth=sourceTable.getBoundingClientRect().width;
+    table.style.width=`${tableWidth}px`;
+    table.style.minWidth=`${tableWidth}px`;
+    syncStickyComparison();
+  }
+
+  function syncStickyComparison(){
+    if(!stickyComparison||!tableWrap)return;
+    if(stickyFrame)cancelAnimationFrame(stickyFrame);
+    stickyFrame=requestAnimationFrame(()=>{
+      stickyFrame=null;
+      if(!stickyComparison)return;
+      const {shell,table,sourceTable,sourceHead}=stickyComparison;
+      const wrapRect=tableWrap.getBoundingClientRect();
+      const headRect=sourceHead.getBoundingClientRect();
+      const tableRect=sourceTable.getBoundingClientRect();
+      const headerBottom=Math.max(0,header?.getBoundingClientRect().bottom||0);
+      const stickyTop=headerBottom+8;
+      const visibleWidth=Math.max(0,Math.min(wrapRect.right,window.innerWidth)-Math.max(wrapRect.left,0));
+      const active=headRect.bottom<stickyTop&&tableRect.bottom>stickyTop+shell.offsetHeight+18&&visibleWidth>80;
+      shell.style.top=`${stickyTop}px`;
+      shell.style.left=`${Math.max(wrapRect.left,0)}px`;
+      shell.style.width=`${visibleWidth}px`;
+      table.style.transform=`translate3d(${-tableWrap.scrollLeft}px,0,0)`;
+      shell.classList.toggle('is-active',active);
+    });
+  }
+
+  function buildStickyComparison(data){
+    removeStickyComparison();
+    const sourceHead=data?.table?.tHead;
+    if(!sourceHead||!tableWrap||!data.table.isConnected)return;
+    const shell=createElement('div','comparisonStickyBar');
+    shell.setAttribute('aria-hidden','true');
+    const table=createElement('table','comparisonStickyTable');
+    const head=sourceHead.cloneNode(true);
+    const sourceCells=[...sourceHead.rows[0].cells];
+    const cloneCells=[...head.rows[0].cells];
+    sourceCells.forEach((cell,index)=>{
+      const width=cell.getBoundingClientRect().width;
+      const clone=cloneCells[index];
+      clone.style.width=`${width}px`;
+      clone.style.minWidth=`${width}px`;
+      clone.style.maxWidth=`${width}px`;
+      if(index===0){
+        clone.innerHTML='<span class="stickyGuideTitle">Comparando</span><small class="stickyGuideHint">colunas alinhadas</small>';
+      }else{
+        const name=cell.textContent.trim();
+        clone.textContent='';
+        clone.append(createElement('span','stickyModelIndex',String(index).padStart(2,'0')));
+        const label=createElement('span','stickyModelName',name);
+        label.append(createElement('small','stickyModelHint','modelo selecionado'));
+        clone.append(label);
+      }
+    });
+    const tableWidth=data.table.getBoundingClientRect().width;
+    table.style.width=`${tableWidth}px`;
+    table.style.minWidth=`${tableWidth}px`;
+    table.append(head);
+    shell.append(table);
+    document.body.append(shell);
+    stickyComparison={shell,table,sourceTable:data.table,sourceHead,sourceCells,cloneCells};
+    if('ResizeObserver' in window){
+      stickyResizeObserver=new ResizeObserver(measureStickyComparison);
+      stickyResizeObserver.observe(data.table);
+    }
+    syncStickyComparison();
+  }
+
+  window.addEventListener('scroll',syncStickyComparison,{passive:true});
+  window.addEventListener('resize',syncStickyComparison,{passive:true});
+  tableWrap?.addEventListener('scroll',syncStickyComparison,{passive:true});
+
   let rowObserver;
   if(!reduceMotion&&'IntersectionObserver' in window){
     rowObserver=new IntersectionObserver(entries=>{
@@ -211,13 +305,14 @@
 
   function animateTable(){
     const data=tableData();
-    if(!data)return;
+    if(!data){removeStickyComparison();return}
     data.rows.forEach((row,index)=>{
       row.classList.add('row-motion');
       row.style.transitionDelay=`${Math.min((index%8)*38,266)}ms`;
       if(rowObserver)rowObserver.observe(row);else row.classList.add('is-visible');
     });
     buildInsights();
+    requestAnimationFrame(()=>buildStickyComparison(data));
   }
 
   const summaryObserver=summary?new MutationObserver(()=>animateSummary()):null;
