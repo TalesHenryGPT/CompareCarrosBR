@@ -31,7 +31,18 @@ const MAINTENANCE_DB=(()=>{
     mercedes:'https://www2.mercedes-benz.com.br/passengercars/services/manuals.html',
     porsche:'https://www.porsche.com/brazil/pt/accessoriesandservice/porscheservice/psmp/',
     denza:'https://www.denza.com/br',
-    avatr:'https://avatr.caoachangan.com.br/novos/avatr-11'
+    avatr:'https://avatr.caoachangan.com.br/novos/avatr-11',
+    volkswagen:'https://www.vw.com.br/pt/servicos-e-acessorios/servicos-de-pos-vendas/revisao.html',
+    nissan:'https://www.nissan.com.br/servicos/revisao-periodica.html',
+    ford:'https://www.ford.com.br/servico-ao-cliente/revisao-preco-fixo/',
+    ram:'https://www.ram.com.br/proprietarios/revisao-programada.html',
+    citroen:'https://www.citroen.com.br/servicos-e-manutencao/revisao.html',
+    mitsubishi:'https://www.mitsubishimotors.com.br/pos-vendas/revisao',
+    landrover:'https://www.landrover.com.br/ownership/servicing-maintenance/index.html',
+    ferrari:'https://www.ferrari.com/en-BR/auto/car-part-services',
+    mclaren:'https://cars.mclaren.com/en/owners/service-and-maintenance',
+    lamborghini:'https://www.lamborghini.com/en-en/ownership/customer-service',
+    changan:'https://caoachangan.com.br/'
   };
 
   function forCar(car){
@@ -67,6 +78,17 @@ const MAINTENANCE_DB=(()=>{
     if(brand==='Honda')return fixed(10000,12,source.honda);
     if(brand==='Suzuki')return fixed(10000,12,source.suzuki);
     if(brand==='Peugeot')return fixed(10000,12,source.peugeot);
+    if(brand==='Volkswagen')return fixed(10000,12,source.volkswagen);
+    if(brand==='Nissan')return fixed(10000,12,source.nissan);
+    if(brand==='Ford')return fixed(10000,12,source.ford);
+    if(brand==='RAM')return fixed(12000,12,source.ram,'Confirmar o intervalo específico da motorização no manual do ano-modelo.');
+    if(brand==='Citroën')return fixed(10000,12,source.citroen);
+    if(brand==='Mitsubishi')return fixed(10000,12,source.mitsubishi);
+    if(brand==='Land Rover')return fixed(16000,12,source.landrover,'O intervalo pode variar por motorização e condições de uso.');
+    if(brand==='Ferrari')return condition('plano de manutenção da Ferrari',source.ferrari,'Confirmar o programa aplicável ao modelo e ano no Ferrari Service.');
+    if(brand==='McLaren')return condition('sistema de manutenção da McLaren',source.mclaren,'Confirmar o programa aplicável ao modelo e ano no McLaren Service Centre.');
+    if(brand==='Lamborghini')return condition('plano de manutenção da Lamborghini',source.lamborghini,'Confirmar o programa aplicável ao modelo e ano na rede autorizada.');
+    if(brand==='CAOA Changan')return fixed(10000,12,source.changan,'Confirmar o intervalo no manual brasileiro do veículo.');
     return fixed(10000,12,'#','Confirmar o intervalo no manual do ano-modelo.');
   }
 
