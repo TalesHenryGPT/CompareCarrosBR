@@ -44,7 +44,10 @@
       if(item.section.id==='rankings'&&sectionHeight<8)continue;
       let activation=item.top-header.offsetHeight-18;
       if(item.section.id==='sobre')activation=Math.min(activation,Math.max(0,maxScroll-100));
-      if(item.section.id==='contato')activation=Math.min(activation,Math.max(0,maxScroll-15));
+      if(item.section.id==='contato'){
+        const contactReveal=item.top-window.innerHeight+(item.section.offsetHeight*.55);
+        activation=Math.min(activation,Math.max(0,contactReveal));
+      }
       if(activation<=window.scrollY)current=item.section;
     }
     if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-3)current=ordered.at(-1).section;
