@@ -1,6 +1,6 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#ffffff"><title>CompareCarrosBR — Modelo 02</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="navigation.css"></head><body>
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#ffffff"><title>CompareCarrosBR — Modelo 02</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="regional.css"><link rel="stylesheet" href="navigation.css?v=3"><style>.heroimg{background-image:url("hero-layout-test-01.webp")}</style></head><body>
 <header class="topbar"><div class="navwrap"><a class="brand" href="#inicio" aria-label="Compare Carros Brasil"><span class="ccmark">CC</span><span class="brandwords"><strong>COMPARE CARROS</strong><em>BRASIL</em></span></a><nav class="mainnav"><a class="active" href="#inicio">Início</a><a href="#comparar">Comparar</a><a href="#rankings">Rankings</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a></nav><a class="saved" href="#comparar"><span>▱</span> Meus Comparativos</a></div></header>
-<main><section id="inicio" class="hero" aria-label="Compare Carros Brasil"><div class="heroimg"></div></section>
+<main><section id="inicio" class="hero" aria-label="Compare Carros Brasil"><div class="heroimg"><div class="heroCopy"><h1>Compare Carros <span>Brasil</span></h1><p>Compare elétricos, híbridos, plug-in, híbridos flex e eletrificados vendidos no Brasil por preço, autonomia, consumo e custo total de propriedade.</p></div></div></section>
 <section id="comparar" class="compareSection"><div class="sectionHead"><h1>Comece seu comparativo</h1><p>Selecione os carros que deseja comparar</p></div>
 <div id="selectors" class="selectors">
 <div class="selectCard"><div class="cardTitle"><span class="carIcon">▣</span><strong>Carro 1</strong></div><select aria-label="Carro 1"></select></div>
@@ -8,12 +8,25 @@
 <div class="selectCard"><div class="cardTitle"><span class="carIcon">▣</span><strong>Carro 3 <small>(opcional)</small></strong></div><select aria-label="Carro 3"></select></div>
 <div class="selectCard"><div class="cardTitle"><span class="carIcon">▣</span><strong>Carro 4 <small>(opcional)</small></strong></div><select aria-label="Carro 4"></select></div>
 <div class="selectCard"><div class="cardTitle"><span class="carIcon">▣</span><strong>Carro 5 <small>(opcional)</small></strong></div><select aria-label="Carro 5"></select></div>
+<div class="selectCard"><div class="cardTitle"><span class="carIcon">▣</span><strong>Carro 6 <small>(opcional)</small></strong></div><select aria-label="Carro 6"></select></div>
 </div>
-<div class="infobar"><span>🚙 Até 5 carros por comparação</span><span>📈 <b id="catalogCount">0</b> modelos disponíveis</span><span>📅 Base nacional • 13/08/2026</span></div>
-<details class="premissas"><summary>Premissas do cálculo</summary><div class="controls"><label>Modalidade<select id="mode"><option>CPF</option><option>CNPJ</option><option>PcD</option></select></label><label>Km por semana<input id="weekly" type="number" value="600" min="0"></label><label>Anos<input id="years" type="number" value="5" min="1" max="15"></label><label>Energia R$/kWh<input id="energy" type="number" value="0.90329" step="0.00001"></label><label>Gasolina R$/L<input id="gas" type="number" value="6.20" step="0.01"></label><label>Etanol R$/L<input id="ethanol" type="number" value="4.30" step="0.01"></label></div></details>
+<div class="infobar"><span>🚙 Até 6 carros por comparação</span><span>📈 <b id="catalogCount">0</b> modelos disponíveis</span><span>📍 Custos regionalizados por UF • 13/08/2026</span></div>
+<details class="premissas" open><summary>Premissas do cálculo</summary><div class="controls regionalControls">
+<label>UF da residência<select id="uf"></select></label>
+<label>Distribuidora<select id="utility"></select></label>
+<label>Bandeira tarifária<select id="tariffFlag"></select></label>
+<label>Compra no estado<select id="localPurchase"><option value="yes">Sim</option><option value="no">Não</option></select></label>
+<label>Modalidade<select id="mode"><option>CPF</option><option>CNPJ</option><option>PcD</option></select></label>
+<label>Km por semana<input id="weekly" type="number" value="100" min="0"></label>
+<label>Anos<input id="years" type="number" value="5" min="1" max="15"></label>
+<label>Energia total R$/kWh<input id="energy" type="number" value="0.92214" step="0.00001"></label>
+<label>Gasolina R$/L<input id="gas" type="number" value="6.19" step="0.01"></label>
+<label>Etanol R$/L<input id="ethanol" type="number" value="3.94" step="0.01"></label>
+<label>IPVA padrão da UF (%)<input id="ipvaRate" type="number" value="4" min="0" max="10" step="0.01"></label>
+</div><div id="regionalMeta" class="regionalMeta"></div></details>
 <div class="actionRow"><button id="compare">Comparar modelos</button></div>
-<section id="summary" class="summary"></section><section id="rankings" class="tablewrap"></section>
-<section id="sobre" class="notes"><h2>Como funciona o TCO</h2><p>O Custo Total de Propriedade considera depreciação, seguro, revisões, IPVA, energia e combustível escolhido.</p></section>
+<section id="summary" class="summary"></section><section id="rankings" class="rankingsArea" aria-label="Rankings do comparativo"><section id="tableWrap" class="tablewrap"></section></section><section id="maintenanceNotes" class="maintenanceNotes" aria-live="polite"></section>
+<section id="sobre" class="notes"><h2>Como funciona o TCO</h2><p>TCO significa <strong>Total Cost of Ownership</strong>, ou <strong>Custo Total de Propriedade</strong>.</p><p>No Compare Carros Brasil, representa quanto o veículo deverá custar ao proprietário durante o período escolhido, considerando:</p><ul><li>depreciação;</li><li>seguro;</li><li>revisões e manutenção;</li><li>IPVA;</li><li>energia elétrica;</li><li>gasolina ou etanol.</li></ul><p>Assim, o TCO permite comparar os veículos pelo <strong>custo total de uso</strong>, e não somente pelo preço de compra.</p></section>
 <section class="mini"><strong>CompareCarrosBR</strong><span>Elétricos • HEV • MHEV • PHEV • híbridos flex</span></section>
 <section id="contato" class="contact">Simulador independente para comparação de veículos eletrificados no Brasil.</section>
-</section></main><footer>CompareCarrosBR • Modelo 02</footer><script src="db.js"></script><script src="logic.js"></script><script src="navigation.js?v=2"></script></body></html>
+</section></main><footer>CompareCarrosBR • Modelo 02</footer><script src="db.js"></script><script src="regional-db.js"></script><script src="maintenance-db.js"></script><script src="logic.js"></script><script src="navigation.js?v=3"></script></body></html>
