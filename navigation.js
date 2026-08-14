@@ -6,6 +6,8 @@
 
   let activeId='';
   let ticking=false;
+  let manualTarget='';
+  let manualUntil=0;
   const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
 
   function setActive(id){
@@ -21,6 +23,11 @@
 
   function updateActive(){
     ticking=false;
+    if(manualTarget&&Date.now()<manualUntil){
+      setActive(manualTarget);
+      return;
+    }
+    manualTarget='';
     const ordered=targets.map(section=>({
       section,
       top:section.getBoundingClientRect().top+window.scrollY
@@ -54,6 +61,8 @@
     const target=document.querySelector(link.getAttribute('href'));
     if(!target)return;
     event.preventDefault();
+    manualTarget=target.id;
+    manualUntil=Date.now()+1300;
     setActive(target.id);
     const top=Math.max(0,target.getBoundingClientRect().top+window.scrollY-header.offsetHeight-14);
     window.scrollTo({top,behavior:reducedMotion.matches?'auto':'smooth'});
@@ -62,6 +71,8 @@
 
   window.addEventListener('scroll',scheduleUpdate,{passive:true});
   window.addEventListener('resize',scheduleUpdate,{passive:true});
+  window.addEventListener('wheel',()=>{manualTarget='';manualUntil=0},{passive:true});
+  window.addEventListener('touchstart',()=>{manualTarget='';manualUntil=0},{passive:true});
   window.addEventListener('load',scheduleUpdate,{once:true});
   updateActive();
 })();
