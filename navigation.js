@@ -30,10 +30,13 @@
       setActive('inicio');
       return;
     }
-    const marker=window.scrollY+Math.max(header.offsetHeight+80,window.innerHeight-120);
+    const tailLead=Math.max(header.offsetHeight+80,window.innerHeight-120);
     let current=ordered[0].section;
     for(const item of ordered){
-      if(item.top<=marker)current=item.section;
+      const sectionHeight=item.section.getBoundingClientRect().height;
+      if(item.section.id==='rankings'&&sectionHeight<8)continue;
+      const lead=['sobre','contato'].includes(item.section.id)?tailLead:header.offsetHeight+18;
+      if(item.top-lead<=window.scrollY)current=item.section;
       else break;
     }
     if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-3)current=ordered.at(-1).section;
