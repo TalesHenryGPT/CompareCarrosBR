@@ -1,4 +1,4 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#ffffff"><title>CompareCarrosBR — Layout 03 Fluid Test</title><meta name="description" content="Compare carros 0 km por custo total de propriedade, com premissas regionalizadas e visualização dinâmica."><link rel="stylesheet" href="styles.css?v=4"><link rel="stylesheet" href="regional.css"><link rel="stylesheet" href="navigation.css?v=4"><link rel="stylesheet" href="layout03-fluid.css?v=11"></head><body class="layout03">
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#ffffff"><title>CompareCarrosBR — Layout 03 Fluid Test</title><meta name="description" content="Compare carros 0 km por custo total de propriedade, com premissas regionalizadas e visualização dinâmica."><link rel="stylesheet" href="styles.css?v=4"><link rel="stylesheet" href="regional.css"><link rel="stylesheet" href="navigation.css?v=4"><link rel="stylesheet" href="layout03-fluid.css?v=12"></head><body class="layout03">
 <header class="topbar"><div class="navwrap"><a class="brand" href="#inicio" aria-label="Compare Carros Brasil"><span class="ccmark">CC</span><span class="brandwords"><strong>COMPARE CARROS</strong><em>BRASIL</em></span></a><nav class="mainnav"><a class="active" href="#inicio">Início</a><a href="#comparar">Comparar</a><a href="#rankings">Rankings</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a></nav><a class="saved" href="#comparar"><span>▱</span> Meus Comparativos</a></div></header>
 <main><section id="inicio" class="hero" aria-label="Compare Carros Brasil">
 <div class="heroContent">
@@ -9,17 +9,39 @@
 <div class="heroTrust"><span>Sem cadastro</span><span>Premissas regionalizadas</span><span>2026 e 2027 • 0 km</span></div>
 </div>
 <div class="heroVisual" aria-hidden="true"><div class="visualShell"><div class="visualGrid"></div>
-<svg class="carSketch suvSketch" viewBox="0 0 820 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustração vetorial de uma SUV elétrica moderna com um gato frajola no banco do motorista e um border collie no banco traseiro">
+<svg class="carSketch suvSketch" viewBox="0 0 820 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustração vetorial de uma SUV elétrica robusta e moderna com um gato frajola no banco do motorista e um border collie no banco traseiro">
 <defs>
-<clipPath id="suvDriverWindowClip"><path d="M449 67H497C521 67 540 76 556 95L607 154H449V67Z"/></clipPath>
-<clipPath id="suvRearWindowClip"><path d="M263 154L316 91C330 74 350 67 378 67H432V154H263Z"/></clipPath>
+<linearGradient id="suvBodyPaint" x1="108" y1="82" x2="730" y2="300" gradientUnits="userSpaceOnUse">
+<stop stop-color="#D9FF6D" stop-opacity=".24"/>
+<stop offset=".48" stop-color="#7FE59F" stop-opacity=".13"/>
+<stop offset="1" stop-color="#063A29" stop-opacity=".62"/>
+</linearGradient>
+<linearGradient id="suvGlassPaint" x1="314" y1="73" x2="548" y2="159" gradientUnits="userSpaceOnUse">
+<stop stop-color="#102E25" stop-opacity=".88"/>
+<stop offset="1" stop-color="#061A13" stop-opacity=".68"/>
+</linearGradient>
+<linearGradient id="suvCladdingPaint" x1="90" y1="220" x2="760" y2="292" gradientUnits="userSpaceOnUse">
+<stop stop-color="#071A13" stop-opacity=".93"/>
+<stop offset=".55" stop-color="#0A2A1E" stop-opacity=".9"/>
+<stop offset="1" stop-color="#06130F" stop-opacity=".96"/>
+</linearGradient>
+<radialGradient id="suvRimPaint" cx=".5" cy=".42" r=".65">
+<stop stop-color="#264C3B"/>
+<stop offset="1" stop-color="#07140F"/>
+</radialGradient>
+<clipPath id="suvDriverWindowClip"><path d="M451 64H497C522 64 542 74 559 94L607 148H451V64Z"/></clipPath>
+<clipPath id="suvRearWindowClip"><path d="M268 148L317 88C332 71 352 64 379 64H431V148H268Z"/></clipPath>
 </defs>
 <g class="suvMotionGroup">
-<path class="suvTrail" d="M18 301H112M5 323H92M730 338H808" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-<path class="suvBody" d="M55 263L62 231C68 207 84 192 109 181C145 165 184 159 231 156L290 87C311 62 338 50 374 49H498C544 49 568 65 592 93L644 153L718 159C761 163 784 184 795 220L807 253H755C746 303 708 331 657 331C606 331 569 303 559 253H323C314 303 276 331 225 331C174 331 136 303 127 253H55V263Z" stroke="currentColor" stroke-width="7" stroke-linejoin="round"/>
-<path class="suvRoofRail" d="M347 38H501C524 38 544 43 561 52" stroke="#FFD43B" stroke-width="4" stroke-linecap="round"/>
-<path class="suvWindow" d="M263 154L316 91C330 74 350 67 378 67H432V154H263Z"/>
-<path class="suvWindow" d="M449 67H497C521 67 540 76 556 95L607 154H449V67Z"/>
+<path class="suvTrail" d="M14 295H108M2 319H88M726 337H812" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+<path class="suvGroundShadow" d="M105 325C227 344 617 345 761 320" stroke="#03100B" stroke-opacity=".45" stroke-width="18" stroke-linecap="round"/>
+<path class="suvBody" d="M43 264L50 229C55 205 73 188 101 176C136 161 177 156 232 152L290 82C313 55 342 43 381 43H499C543 43 570 58 596 88L645 146L728 154C770 158 793 181 802 218L814 252L797 269H757C749 306 711 331 659 331C607 331 571 305 560 264H323C313 305 276 331 224 331C172 331 135 305 125 264H43Z" fill="url(#suvBodyPaint)" stroke="currentColor" stroke-width="7" stroke-linejoin="round"/>
+<path class="suvCladding" d="M45 242L124 241C137 211 170 194 224 194C280 194 310 212 325 246H558C573 212 604 194 659 194C714 194 746 212 758 242H809L814 252L797 269H756C747 308 709 333 659 333C608 333 570 307 559 266H324C313 307 275 333 224 333C173 333 134 307 124 266H43L45 242Z" fill="url(#suvCladdingPaint)" stroke="rgba(217,255,109,.46)" stroke-width="2.5" stroke-linejoin="round"/>
+<path class="suvBodyGloss" d="M94 183C149 160 205 160 252 155L303 94C325 68 350 58 386 57H494C536 57 558 72 582 99" stroke="rgba(255,255,255,.34)" stroke-width="3" stroke-linecap="round"/>
+<path class="suvRoofRail" d="M343 31H505C529 31 550 37 568 48" stroke="#FFD43B" stroke-width="4" stroke-linecap="round"/>
+<path class="suvSpoiler" d="M286 62L316 44H361" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="suvWindow" d="M268 148L317 88C332 71 352 64 379 64H431V148H268Z" fill="url(#suvGlassPaint)"/>
+<path class="suvWindow" d="M451 64H497C522 64 542 74 559 94L607 148H451V64Z" fill="url(#suvGlassPaint)"/>
 <g class="suvRearDog" clip-path="url(#suvRearWindowClip)" aria-hidden="true">
 <path class="suvDogBody" d="M313 169C317 143 333 132 359 132C387 132 404 145 408 169H313Z" fill="#0A120F" stroke="currentColor" stroke-width="2.5"/>
 <path class="suvDogChest" d="M344 134C349 146 359 153 370 134L382 169H333L344 134Z" fill="#FFFDF5"/>
@@ -53,24 +75,35 @@
 <path class="suvCatWhiskers" d="M538 129L560 126M539 133L563 134M515 129L497 126M515 133L497 137" stroke="#FFFDF5" stroke-width="1.8" stroke-linecap="round"/>
 <path class="suvCatPaw" d="M540 151C543 144 553 144 556 151V159H539L540 151Z" fill="#FFFDF5" stroke="currentColor" stroke-width="1.5"/>
 </g>
-<path class="suvDetail" d="M434 69V154M239 169H657M364 171V188M364 207V241M514 171V188M514 207V241M344 197H374M493 197H523" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-<path class="suvShoulder" d="M111 183C175 169 237 166 305 166H674" stroke="rgba(217,255,109,.55)" stroke-width="2.5" stroke-linecap="round"/>
-<path class="suvRocker" d="M327 252H554M139 252H122M759 252H743" stroke="#FFD43B" stroke-width="5" stroke-linecap="round"/>
-<path class="suvHeadlight" d="M739 190L786 201L792 218L748 212" stroke="#FFD43B" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-<path class="suvTailLight" d="M72 220L111 213" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+<path class="suvPillar" d="M441 65V149" stroke="#D9FF6D" stroke-width="8" stroke-linecap="round"/>
+<path class="suvBeltline" d="M111 179C182 159 254 158 320 158H671" stroke="rgba(217,255,109,.72)" stroke-width="3" stroke-linecap="round"/>
+<path class="suvShoulder" d="M118 190C235 176 378 177 500 178L674 170L735 180" stroke="rgba(255,255,255,.25)" stroke-width="2.5" stroke-linecap="round"/>
+<path class="suvHoodSculpt" d="M616 153L691 166L747 166M622 165L675 181" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+<path class="suvDoorCut" d="M363 170V239M516 166V239" stroke="rgba(217,255,109,.42)" stroke-width="2.5" stroke-linecap="round"/>
+<path class="suvDoorHandle" d="M337 192H370M491 190H524" stroke="#D9FF6D" stroke-width="4" stroke-linecap="round"/>
+<path class="suvMirror" d="M600 145C620 140 633 143 641 153C631 161 618 163 603 158Z" fill="#071A13" stroke="#FFD43B" stroke-width="3" stroke-linejoin="round"/>
+<path class="suvRocker" d="M325 251H557" stroke="#FFD43B" stroke-width="6" stroke-linecap="round"/>
+<path class="suvFrontMask" d="M716 171L778 184L798 219L749 216L721 198Z" fill="rgba(6,20,15,.72)" stroke="rgba(217,255,109,.52)" stroke-width="2.5" stroke-linejoin="round"/>
+<path class="suvHeadlight" d="M728 179L779 190L789 205L746 198L728 179Z" fill="rgba(228,255,249,.38)" stroke="#E8FFF7" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="suvSignatureLight" d="M736 183L776 192" stroke="#FFD43B" stroke-width="3" stroke-linecap="round"/>
+<path class="suvFrontIntake" d="M760 230H803L808 247L786 258H754" stroke="#07130F" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="suvTailLight" d="M54 211L104 199L119 204L72 220" stroke="#FFD43B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="suvRearBumper" d="M47 244H100L111 258H58" stroke="#07130F" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="suvFender suvFenderRear" d="M143 246C151 211 180 190 224 190C268 190 298 211 306 247" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+<path class="suvFender suvFenderFront" d="M578 246C587 211 616 190 659 190C703 190 733 211 741 247" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
 <g class="suvWheel suvWheelRear">
-<circle cx="225" cy="269" r="56" fill="rgba(6,58,41,.72)" stroke="#FFD43B" stroke-width="8"/>
-<circle cx="225" cy="269" r="36" stroke="currentColor" stroke-width="4"/>
-<circle cx="225" cy="269" r="8" fill="#FFD43B"/>
-<path d="M225 233V305M189 269H261M200 244L250 294M250 244L200 294" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+<circle class="suvWheelTire" cx="224" cy="269" r="59" fill="#06110D" stroke="#D9FF6D" stroke-width="6"/>
+<circle class="suvWheelRim" cx="224" cy="269" r="43" fill="url(#suvRimPaint)" stroke="#FFD43B" stroke-width="3"/>
+<path class="suvWheelSpokes" d="M224 228L232 257L259 244L239 267L264 281L235 278L237 309L224 282L211 309L213 278L184 281L209 267L189 244L216 257L224 228Z" fill="rgba(217,255,109,.82)"/>
+<circle cx="224" cy="269" r="10" fill="#FFD43B" stroke="#07140F" stroke-width="3"/>
 </g>
 <g class="suvWheel suvWheelFront">
-<circle cx="657" cy="269" r="56" fill="rgba(6,58,41,.72)" stroke="#FFD43B" stroke-width="8"/>
-<circle cx="657" cy="269" r="36" stroke="currentColor" stroke-width="4"/>
-<circle cx="657" cy="269" r="8" fill="#FFD43B"/>
-<path d="M657 233V305M621 269H693M632 244L682 294M682 244L632 294" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+<circle class="suvWheelTire" cx="659" cy="269" r="59" fill="#06110D" stroke="#D9FF6D" stroke-width="6"/>
+<circle class="suvWheelRim" cx="659" cy="269" r="43" fill="url(#suvRimPaint)" stroke="#FFD43B" stroke-width="3"/>
+<path class="suvWheelSpokes" d="M659 228L667 257L694 244L674 267L699 281L670 278L672 309L659 282L646 309L648 278L619 281L644 267L624 244L651 257L659 228Z" fill="rgba(217,255,109,.82)"/>
+<circle cx="659" cy="269" r="10" fill="#FFD43B" stroke="#07140F" stroke-width="3"/>
 </g>
-<path class="suvBolt" d="M430 176L400 218H430L409 264L472 202H441L464 176H430Z" fill="#FFD43B"/>
+<path class="suvBolt" d="M429 186L407 216H429L414 250L459 207H437L454 186H429Z" fill="#FFD43B"/>
 </g>
 </svg>
 <div class="roadPulse"></div>
