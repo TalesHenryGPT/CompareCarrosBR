@@ -62,7 +62,7 @@
     if(!target)return;
     event.preventDefault();
     manualTarget=target.id;
-    manualUntil=Date.now()+1300;
+    manualUntil=Date.now()+2600;
     setActive(target.id);
     const top=Math.max(0,target.getBoundingClientRect().top+window.scrollY-header.offsetHeight-14);
     window.scrollTo({top,behavior:reducedMotion.matches?'auto':'smooth'});
