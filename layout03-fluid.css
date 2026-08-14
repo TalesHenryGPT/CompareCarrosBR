@@ -124,7 +124,11 @@ body.layout03{
 .layout03 .suvSketch .suvDriverCat{transform-box:fill-box;transform-origin:52% 70%;animation:l3PassengerIdle 3.8s ease-in-out infinite}
 .layout03 .suvSketch .suvCatPupil{transform-box:fill-box;transform-origin:center;animation:l3CatCounterGaze 8s ease-in-out infinite}
 .layout03 .suvSketch .suvRearDog{transform-box:fill-box;transform-origin:52% 72%;animation:l3PassengerIdle 3.8s ease-in-out -.9s infinite}
-.layout03 .suvSketch .suvDogHeadTurn,.layout03 .suvSketch .suvCatHeadTurn{transform-box:fill-box;transform-style:preserve-3d;will-change:transform}
+.layout03 .suvSketch .suvDogHeadTurn,.layout03 .suvSketch .suvCatHeadTurn{transform-box:fill-box;transform-style:preserve-3d;backface-visibility:hidden;will-change:transform;filter:url(#animalDepth)}
+.layout03 .suvSketch .suvDogBody,.layout03 .suvSketch .suvCatBody{filter:drop-shadow(0 3px 3px rgba(0,10,6,.45))}
+.layout03 .suvSketch .suvAnimalFurGlow{mix-blend-mode:screen}
+.layout03 .suvSketch .suvEyeShine{filter:drop-shadow(0 0 2px rgba(255,255,255,.9));animation:l3EyeSpark 2.4s ease-in-out infinite}
+.layout03 .suvSketch .suvNoseShine{opacity:.78}
 .layout03 .suvSketch .suvDogHeadTurn{transform-origin:70% 72%;animation:l3DogHeadTurn 8s cubic-bezier(.45,.05,.55,.95) infinite}
 .layout03 .suvSketch .suvCatHeadTurn{transform-origin:70% 72%;animation:l3CatHeadTurn 8s cubic-bezier(.45,.05,.55,.95) infinite}
 .layout03 .suvSketch .suvDogHead{filter:drop-shadow(0 2px 3px rgba(0,0,0,.24))}
@@ -272,10 +276,11 @@ body.layout03{
 .motion-ready [data-reveal].is-visible{opacity:1;transform:none}
 
 @keyframes l3PassengerIdle{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.5px)}}
-@keyframes l3DogHeadTurn{0%,8%,32%,100%{transform:translate3d(0,0,0) rotateY(0)}44%,78%{transform:translate3d(5px,0,0) rotateY(-68deg)}90%{transform:translate3d(0,0,0) rotateY(0)}}
-@keyframes l3CatHeadTurn{0%,8%,32%,100%{transform:translate3d(5px,0,0) rotateY(-68deg)}44%,78%{transform:translate3d(0,0,0) rotateY(0)}90%{transform:translate3d(5px,0,0) rotateY(-68deg)}}
+@keyframes l3DogHeadTurn{0%,8%,32%,100%{transform:perspective(420px) translateZ(7px) translate3d(0,0,0) rotateY(0)}44%,78%{transform:perspective(420px) translateZ(7px) translate3d(5px,0,0) rotateY(-68deg)}90%{transform:perspective(420px) translateZ(7px) translate3d(0,0,0) rotateY(0)}}
+@keyframes l3CatHeadTurn{0%,8%,32%,100%{transform:perspective(420px) translateZ(7px) translate3d(5px,0,0) rotateY(-68deg)}44%,78%{transform:perspective(420px) translateZ(7px) translate3d(0,0,0) rotateY(0)}90%{transform:perspective(420px) translateZ(7px) translate3d(5px,0,0) rotateY(-68deg)}}
 @keyframes l3DogGaze{0%,8%,32%,100%{transform:translateX(0)}44%,78%{transform:translateX(2.5px)}90%{transform:translateX(0)}}
 @keyframes l3CatCounterGaze{0%,8%,32%,100%{transform:translateX(2.5px)}44%,78%{transform:translateX(0)}90%{transform:translateX(2.5px)}}
+@keyframes l3EyeSpark{0%,100%{opacity:.62}50%{opacity:1}}
 @keyframes l3DogBlink{0%,46%,49%,100%{transform:scaleY(1)}47%,48%{transform:scaleY(.08)}}
 @keyframes l3DogHappy{0%,100%{transform:scaleY(.94) rotate(-1deg)}50%{transform:scaleY(1.08) rotate(1deg)}}
 @keyframes l3CatBlink{0%,43%,46%,78%,81%,100%{transform:scaleY(1)}44%,45%,79%,80%{transform:scaleY(.08)}}
