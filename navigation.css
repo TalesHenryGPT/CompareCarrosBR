@@ -1,0 +1,7 @@
+.mainnav a{transition:color .28s ease,transform .28s ease}
+.mainnav a::after{content:"";position:absolute;left:0;right:0;bottom:16px;height:2px;background:#f6bd00;opacity:0;transform:scaleX(0);transform-origin:center;transition:opacity .28s ease,transform .28s ease}
+.mainnav a.active{color:#f6bd00}
+.mainnav a.active::after{background:#f6bd00;opacity:1;transform:scaleX(1)}
+.mainnav a:focus-visible{outline:2px solid #f6bd00;outline-offset:6px;border-radius:2px}
+#inicio,#comparar,#rankings,#sobre,#contato{scroll-margin-top:118px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.mainnav a,.mainnav a::after{transition:none}}
