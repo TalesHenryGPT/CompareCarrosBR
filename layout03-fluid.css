@@ -213,13 +213,11 @@ body.layout03{
 .comparisonStickyTable th:last-child{border-right:0!important}
 .stickyGuideTitle,.stickyModelName{display:block;overflow:hidden;text-overflow:ellipsis}
 .stickyGuideTitle{font-size:12px;font-weight:820;letter-spacing:-.015em}
-.stickyGuideHint{display:block;margin-top:2px;color:#77847b;font-size:9px;font-weight:650;letter-spacing:.04em;text-transform:uppercase}
 .stickyModelIndex{
   display:inline-grid;place-items:center;float:left;width:25px;height:25px;margin:1px 8px 0 0;border-radius:8px;
   background:var(--l3-deep);color:var(--l3-yellow);font-size:9px;font-weight:850;letter-spacing:.05em;
 }
-.stickyModelName{padding-top:1px;font-size:11px;font-weight:790;line-height:1.18}
-.stickyModelHint{display:block;margin-top:2px;color:#68766d;font-family:var(--l3-body);font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.stickyModelName{display:flex;align-items:center;min-height:27px;padding-top:0;font-size:11px;font-weight:790;line-height:1.18}
 
 .layout03 .tablewrap{border-color:rgba(16,34,26,.1);border-radius:26px;box-shadow:0 22px 65px rgba(22,55,38,.1)}
 .layout03 table{background:#fffefa}
