@@ -30,14 +30,15 @@
       setActive('inicio');
       return;
     }
-    const tailLead=Math.max(header.offsetHeight+80,window.innerHeight-120);
+    const maxScroll=Math.max(0,document.documentElement.scrollHeight-window.innerHeight);
     let current=ordered[0].section;
     for(const item of ordered){
       const sectionHeight=item.section.getBoundingClientRect().height;
       if(item.section.id==='rankings'&&sectionHeight<8)continue;
-      const lead=['sobre','contato'].includes(item.section.id)?tailLead:header.offsetHeight+18;
-      if(item.top-lead<=window.scrollY)current=item.section;
-      else break;
+      let activation=item.top-header.offsetHeight-18;
+      if(item.section.id==='sobre')activation=Math.min(activation,Math.max(0,maxScroll-100));
+      if(item.section.id==='contato')activation=Math.min(activation,Math.max(0,maxScroll-15));
+      if(activation<=window.scrollY)current=item.section;
     }
     if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-3)current=ordered.at(-1).section;
     setActive(current.id);
