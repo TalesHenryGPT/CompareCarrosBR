@@ -1,4 +1,4 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#ffffff"><title>CompareCarrosBR — Layout 03 Fluid Test</title><meta name="description" content="Compare carros 0 km por custo total de propriedade, com premissas regionalizadas e visualização dinâmica."><link rel="stylesheet" href="styles.css?v=4"><link rel="stylesheet" href="regional.css"><link rel="stylesheet" href="navigation.css?v=4"><link rel="stylesheet" href="layout03-fluid.css?v=4"></head><body class="layout03">
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#ffffff"><title>CompareCarrosBR — Layout 03 Fluid Test</title><meta name="description" content="Compare carros 0 km por custo total de propriedade, com premissas regionalizadas e visualização dinâmica."><link rel="stylesheet" href="styles.css?v=4"><link rel="stylesheet" href="regional.css"><link rel="stylesheet" href="navigation.css?v=4"><link rel="stylesheet" href="layout03-fluid.css?v=5"></head><body class="layout03">
 <header class="topbar"><div class="navwrap"><a class="brand" href="#inicio" aria-label="Compare Carros Brasil"><span class="ccmark">CC</span><span class="brandwords"><strong>COMPARE CARROS</strong><em>BRASIL</em></span></a><nav class="mainnav"><a class="active" href="#inicio">Início</a><a href="#comparar">Comparar</a><a href="#rankings">Rankings</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a></nav><a class="saved" href="#comparar"><span>▱</span> Meus Comparativos</a></div></header>
 <main><section id="inicio" class="hero" aria-label="Compare Carros Brasil">
 <div class="heroContent">
@@ -9,13 +9,32 @@
 <div class="heroTrust"><span>Sem cadastro</span><span>Premissas regionalizadas</span><span>2026 e 2027 • 0 km</span></div>
 </div>
 <div class="heroVisual" aria-hidden="true"><div class="visualShell"><div class="visualGrid"></div>
-<svg class="carSketch suvSketch" viewBox="0 0 820 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustração vetorial de uma SUV elétrica moderna">
+<svg class="carSketch suvSketch" viewBox="0 0 820 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustração vetorial de uma SUV elétrica moderna com um gato frajola no banco do motorista">
+<defs>
+<clipPath id="suvDriverWindowClip"><path d="M449 67H497C521 67 540 76 556 95L607 154H449V67Z"/></clipPath>
+</defs>
 <g class="suvMotionGroup">
 <path class="suvTrail" d="M18 301H112M5 323H92M730 338H808" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
 <path class="suvBody" d="M55 263L62 231C68 207 84 192 109 181C145 165 184 159 231 156L290 87C311 62 338 50 374 49H498C544 49 568 65 592 93L644 153L718 159C761 163 784 184 795 220L807 253H755C746 303 708 331 657 331C606 331 569 303 559 253H323C314 303 276 331 225 331C174 331 136 303 127 253H55V263Z" stroke="currentColor" stroke-width="7" stroke-linejoin="round"/>
 <path class="suvRoofRail" d="M347 38H501C524 38 544 43 561 52" stroke="#FFD43B" stroke-width="4" stroke-linecap="round"/>
 <path class="suvWindow" d="M263 154L316 91C330 74 350 67 378 67H432V154H263Z"/>
 <path class="suvWindow" d="M449 67H497C521 67 540 76 556 95L607 154H449V67Z"/>
+<g class="suvDriverCat" clip-path="url(#suvDriverWindowClip)" aria-hidden="true">
+<path class="suvCatBody" d="M481 169C482 143 495 132 519 131C545 130 561 144 566 169H481Z" fill="#0B1511" stroke="currentColor" stroke-width="2.5"/>
+<path class="suvCatChest" d="M510 134C515 143 522 148 532 134L541 165H501L510 134Z" fill="#FFFDF5"/>
+<path class="suvCatHead" d="M491 111L496 82L514 96C521 92 531 92 538 96L554 83L557 112C558 130 546 141 525 141C504 141 491 130 491 111Z" fill="#0A120F" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+<path class="suvCatBlaze" d="M524 94C518 103 519 114 523 121C526 126 526 133 523 140C533 141 541 137 545 130C539 127 536 121 537 115C538 106 533 99 524 94Z" fill="#FFFDF5"/>
+<ellipse class="suvCatMuzzle" cx="530" cy="127" rx="16" ry="11" fill="#FFFDF5"/>
+<g class="suvCatEyes">
+<ellipse cx="514" cy="112" rx="5.5" ry="6.5" fill="#FFD43B"/>
+<ellipse cx="537" cy="112" rx="5.5" ry="6.5" fill="#FFD43B"/>
+<ellipse cx="517" cy="112" rx="2" ry="4.5" fill="#07100C"/>
+<ellipse cx="540" cy="112" rx="2" ry="4.5" fill="#07100C"/>
+</g>
+<path class="suvCatNose" d="M532 123L538 125L533 130Z" fill="#EFA0A7"/>
+<path class="suvCatWhiskers" d="M538 129L560 126M539 133L563 134M515 129L497 126M515 133L497 137" stroke="#FFFDF5" stroke-width="1.8" stroke-linecap="round"/>
+<path class="suvCatPaw" d="M540 151C543 144 553 144 556 151V159H539L540 151Z" fill="#FFFDF5" stroke="currentColor" stroke-width="1.5"/>
+</g>
 <path class="suvDetail" d="M434 69V154M239 169H657M364 171V188M364 207V241M514 171V188M514 207V241M344 197H374M493 197H523" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
 <path class="suvShoulder" d="M111 183C175 169 237 166 305 166H674" stroke="rgba(217,255,109,.55)" stroke-width="2.5" stroke-linecap="round"/>
 <path class="suvRocker" d="M327 252H554M139 252H122M759 252H743" stroke="#FFD43B" stroke-width="5" stroke-linecap="round"/>
