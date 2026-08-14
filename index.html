@@ -1,7 +1,27 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#ffffff"><title>CompareCarrosBR — Versão 02</title><link rel="stylesheet" href="styles.css?v=4"><link rel="stylesheet" href="regional.css"><link rel="stylesheet" href="navigation.css?v=4"><style>.heroimg{background-image:url("hero-layout-test-01.webp")}</style></head><body>
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#ffffff"><title>CompareCarrosBR — Layout 03 Fluid Test</title><meta name="description" content="Compare carros 0 km por custo total de propriedade, com premissas regionalizadas e visualização dinâmica."><link rel="stylesheet" href="styles.css?v=4"><link rel="stylesheet" href="regional.css"><link rel="stylesheet" href="navigation.css?v=4"><link rel="stylesheet" href="layout03.css?v=1"></head><body class="layout03">
 <header class="topbar"><div class="navwrap"><a class="brand" href="#inicio" aria-label="Compare Carros Brasil"><span class="ccmark">CC</span><span class="brandwords"><strong>COMPARE CARROS</strong><em>BRASIL</em></span></a><nav class="mainnav"><a class="active" href="#inicio">Início</a><a href="#comparar">Comparar</a><a href="#rankings">Rankings</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a></nav><a class="saved" href="#comparar"><span>▱</span> Meus Comparativos</a></div></header>
-<main><section id="inicio" class="hero" aria-label="Compare Carros Brasil"><div class="heroimg"><div class="heroCopy"><h1>Compare Carros <span>Brasil</span></h1><p>Compare veículos a combustão, flex, elétricos e híbridos vendidos no Brasil por preço, autonomia, consumo e custo total de propriedade.</p></div></div></section>
-<section id="comparar" class="compareSection"><div class="sectionHead"><h1>Comece seu comparativo</h1><p>Selecione os carros que deseja comparar</p></div>
+<main><section id="inicio" class="hero" aria-label="Compare Carros Brasil">
+<div class="heroContent">
+<p class="heroKicker">Comparação inteligente • Brasil</p>
+<h1>Escolha com clareza.<span class="accent">Dirija a melhor decisão.</span></h1>
+<p class="heroLead">Compare carros 0 km pelo custo real de propriedade, com energia, combustível, seguro, IPVA, manutenção e depreciação ajustados ao seu uso.</p>
+<div class="heroActions"><a class="heroPrimary" href="#comparar">Começar comparação <span aria-hidden="true">→</span></a><a class="heroSecondary" href="#sobre">Entender o TCO</a></div>
+<div class="heroTrust"><span>Sem cadastro</span><span>Premissas regionalizadas</span><span>2026 e 2027 • 0 km</span></div>
+</div>
+<div class="heroVisual" aria-hidden="true"><div class="visualShell"><div class="visualGrid"></div>
+<svg class="carSketch" viewBox="0 0 780 330" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M48 228C70 181 119 157 191 151L250 91C270 70 299 57 335 55H452C487 55 516 69 538 94L587 151H642C682 151 713 174 724 211L736 252H704C696 287 667 311 630 311C593 311 563 287 556 252H244C237 287 207 311 170 311C133 311 103 287 96 252H45L48 228Z" stroke="currentColor" stroke-width="7" stroke-linejoin="round"/>
+<path d="M252 151L297 99C309 85 329 77 352 77H449C471 77 491 86 505 102L547 151H252Z" stroke="currentColor" stroke-width="5"/>
+<path d="M368 78V151M545 151H592M83 213H124" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+<circle cx="170" cy="252" r="39" stroke="#FFD43B" stroke-width="8"/><circle cx="630" cy="252" r="39" stroke="#FFD43B" stroke-width="8"/>
+<path d="M399 176L369 218H399L379 261L440 202H410L432 176H399Z" fill="#FFD43B"/>
+</svg>
+<div class="roadPulse"></div>
+<div class="floatMetric metricOne"><small>TCO comparado</small><strong><span class="metricDot"></span>Decisão clara</strong></div>
+<div class="floatMetric metricTwo"><small>Custos regionalizados</small><strong>UF + perfil de uso</strong></div>
+</div></div>
+</section>
+<section id="comparar" class="compareSection"><div class="sectionHead"><p class="sectionKicker">Monte seu cenário</p><h1>Compare com contexto, não apenas preço.</h1><p>Escolha até seis modelos e ajuste as premissas para enxergar o custo total da sua decisão.</p></div>
 <div id="selectors" class="selectors">
 <div class="selectCard"><div class="cardTitle"><span class="carIcon">▣</span><strong>Carro 1</strong></div><select aria-label="Carro 1"></select></div>
 <div class="selectCard"><div class="cardTitle"><span class="carIcon">▣</span><strong>Carro 2</strong></div><select aria-label="Carro 2"></select></div>
@@ -16,17 +36,27 @@
 <label>Distribuidora<select id="utility"></select></label>
 <label>Bandeira tarifária<select id="tariffFlag"></select></label>
 <label>Compra no estado<select id="localPurchase"><option value="yes">Sim</option><option value="no">Não</option></select></label>
-<label>Modalidade<select id="mode"><option>CPF</option><option>CNPJ</option><option>PcD</option></select></label>
+<label>Modalidade de compra<select id="mode"><option>CPF</option><option>CNPJ</option><option>PcD</option></select></label>
 <label>Km por semana<input id="weekly" type="number" value="100" min="0"></label>
 <label>Anos<input id="years" type="number" value="5" min="1" max="15"></label>
 <label>Energia total R$/kWh<input id="energy" type="number" value="0.92214" step="0.00001"></label>
 <label>Gasolina R$/L<input id="gas" type="number" value="6.19" step="0.01"></label>
 <label>Etanol R$/L<input id="ethanol" type="number" value="3.94" step="0.01"></label>
 <label>IPVA padrão da UF (%)<input id="ipvaRate" type="number" value="4" min="0" max="10" step="0.01"></label>
-</div><div id="regionalMeta" class="regionalMeta"></div></details>
+</div><div id="regionalMeta" class="regionalMeta"></div><p class="privacyHint"><span aria-hidden="true">◉</span><span>As premissas, inclusive a modalidade PcD, são processadas localmente no navegador neste protótipo e não formam perfil de usuário.</span></p></details>
 <div class="actionRow"><button id="compare">Comparar modelos</button></div>
 <section id="summary" class="summary"></section><section id="rankings" class="rankingsArea" aria-label="Rankings do comparativo"><section id="tableWrap" class="tablewrap"></section></section><section id="maintenanceNotes" class="maintenanceNotes" aria-live="polite"></section>
 <section id="sobre" class="notes"><h2>Como funciona o TCO</h2><p>TCO significa <strong>Total Cost of Ownership</strong>, ou <strong>Custo Total de Propriedade</strong>.</p><p>No Compare Carros Brasil, representa quanto o veículo deverá custar ao proprietário durante o período escolhido, considerando:</p><ul><li>depreciação;</li><li>seguro;</li><li>revisões e manutenção;</li><li>IPVA;</li><li>energia elétrica;</li><li>gasolina ou etanol.</li></ul><p>Assim, o TCO permite comparar os veículos pelo <strong>custo total de uso</strong>, e não somente pelo preço de compra.</p></section>
 <section class="mini"><strong>CompareCarrosBR</strong><span>Combustão • Flex • BEV • HEV • MHEV • PHEV</span></section>
-<section class="contact">Simulador independente para comparação de veículos eletrificados no Brasil.</section>
-</section></main><footer id="contato" class="siteFooter" aria-label="Contato"><span>CompareCarrosBR • Versão 02</span><a href="mailto:contato@comparecarrosbrasil.com.br">contato@comparecarrosbrasil.com.br</a></footer><script src="db.js?v=2"></script><script src="regional-db.js"></script><script src="maintenance-db.js?v=2"></script><script src="logic.js?v=6"></script><script src="navigation.js?v=4"></script></body></html>
+<section class="contact">Simulador independente para comparação de veículos 0 km comercializados no Brasil.</section>
+<section id="privacidade" class="legalPanel">
+<div><p class="sectionKicker">Privacidade e autoria</p><h2>Design responsável desde o primeiro teste.</h2></div>
+<div class="legalGrid">
+<div class="legalCard"><strong>Proteção de dados</strong>O comparador não exige cadastro e não envia ao banco de dados as escolhas, a UF, a quilometragem ou a modalidade informada. Não usamos cookies publicitários nem fontes externas. O provedor de hospedagem pode manter registros técnicos essenciais de segurança e operação.</div>
+<div class="legalCard"><strong>Marcas e imagens</strong>Nomes de montadoras e modelos são usados exclusivamente para identificar os veículos comparados. As marcas pertencem aos respectivos titulares e não indicam patrocínio ou vínculo comercial. O protótipo usa ilustração vetorial autoral e identificadores textuais.</div>
+<div class="legalCard"><strong>Layout autoral</strong>A fluidez foi estudada a partir de referências de mercado, mas nenhum código, texto, imagem, fonte proprietária ou elemento visual do Mobbin, Mews ou Customer.io foi incorporado.</div>
+<div class="legalCard"><strong>Bases consideradas</strong><a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709compilado.htm" target="_blank" rel="noopener noreferrer">LGPD</a>, <a href="https://www.planalto.gov.br/ccivil_03/leis/l9610.htm" target="_blank" rel="noopener noreferrer">Lei de Direitos Autorais</a>, <a href="https://www.planalto.gov.br/ccivil_03/leis/l9279.htm" target="_blank" rel="noopener noreferrer">Lei da Propriedade Industrial</a> e proteção constitucional da imagem.</div>
+</div>
+<p class="legalSmall">Aviso do protótipo: antes da abertura comercial, recomenda-se revisão jurídica final da política de privacidade, dos contratos com fornecedores e das licenças de todos os ativos utilizados.</p>
+</section>
+</section></main><footer id="contato" class="siteFooter" aria-label="Contato"><span>CompareCarrosBR • Layout 03 — teste visual</span><div class="footerLegal"><a href="mailto:contato@comparecarrosbrasil.com.br">contato@comparecarrosbrasil.com.br</a><a href="#privacidade">Privacidade e direitos</a></div></footer><script src="db.js?v=2"></script><script src="regional-db.js"></script><script src="maintenance-db.js?v=2"></script><script src="logic.js?v=7"></script><script src="navigation.js?v=4"></script><script src="motion.js?v=1"></script></body></html>
