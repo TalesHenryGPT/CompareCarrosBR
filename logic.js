@@ -4,7 +4,7 @@ const $=id=>document.getElementById(id),fmt=v=>new Intl.NumberFormat('pt-BR',{st
 
 function priceForMode(c){return c[mode.value==='PcD'?'pcd':mode.value.toLowerCase()]}
 function opts(i){let h=`<option value=''>${i<2?'Selecione um modelo':'Selecione um modelo (opcional)'}</option>`;for(const b of brands){h+=`<optgroup label='${b}'>`;cars.forEach((c,j)=>{if(c.brand===b)h+=`<option value='${j}'>${c.model} — ${c.type} — ${fmt(priceForMode(c))}</option>`});h+='</optgroup>'}return h}
-function refreshSelectors(initial=false){const ss=[...sel.querySelectorAll('select')],prev=ss.map(s=>s.value);ss.forEach((s,i)=>{const keep=prev[i];s.innerHTML=opts(i);if(keep!==undefined&&keep!=='')s.value=keep});if(initial){const d=cars.findIndex(c=>c.brand==='BYD'&&c.model==='Dolphin GS'),o=cars.findIndex(c=>c.brand==='GWM'&&c.model==='ORA 5');if(ss[0])ss[0].value=d>=0?d:0;if(ss[1])ss[1].value=o>=0?o:1}}
+function refreshSelectors(){const ss=[...sel.querySelectorAll('select')],prev=ss.map(s=>s.value);ss.forEach((s,i)=>{const keep=prev[i];s.innerHTML=opts(i);if(keep!==undefined&&keep!=='')s.value=keep})}
 
 function isBev(c){return c.type.includes('BEV')||c.type==='Elétrico'}
 function isHybrid(c){return !isBev(c)&&(/HEV|PHEV|MHEV|EREV|Híbrido/i).test(c.type)}
@@ -57,5 +57,5 @@ function render(){
   let html='<table><thead><tr><th>Parâmetro</th>'+data.map(x=>'<th>'+x.c.brand+' '+x.c.model+'</th>').join('')+'</tr></thead><tbody>';for(const[label,value]of metrics)html+='<tr><td>'+label+'</td>'+data.map(x=>`<td class='${label===tcoPeriodLabel&&x.r.tco===best?'best':''}'>${value(x)}</td>`).join('')+'</tr>';tableWrap.innerHTML=html+'</tbody></table>';maintenanceLegend(data)
 }
 
-uf.innerHTML=Object.entries(REGIONAL_DB.states).map(([code,name])=>`<option value='${code}'>${name} (${code})</option>`).join('');uf.value='MG';tariffFlag.innerHTML=Object.entries(REGIONAL_DB.energyFlags).map(([code,item])=>`<option value='${code}'>${item.label}</option>`).join('');tariffFlag.value=REGIONAL_DB.currentFlag;refreshSelectors(true);$('catalogCount').textContent=cars.length;updateState();
+uf.innerHTML=Object.entries(REGIONAL_DB.states).map(([code,name])=>`<option value='${code}'>${name} (${code})</option>`).join('');uf.value='MG';tariffFlag.innerHTML=Object.entries(REGIONAL_DB.energyFlags).map(([code,item])=>`<option value='${code}'>${item.label}</option>`).join('');tariffFlag.value=REGIONAL_DB.currentFlag;refreshSelectors();$('catalogCount').textContent=cars.length;updateState();
 $('compare').onclick=render;[weekly,years,energy,gas,ethanol,ipvaRate,localPurchase].forEach(input=>input.addEventListener('change',()=>{showRegionalMeta();render()}));mode.addEventListener('change',()=>{refreshSelectors();render()});uf.addEventListener('change',updateState);utility.addEventListener('change',updateEnergy);tariffFlag.addEventListener('change',updateEnergy);sel.addEventListener('change',render);render();
