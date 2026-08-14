@@ -266,13 +266,12 @@
       clone.style.minWidth=`${width}px`;
       clone.style.maxWidth=`${width}px`;
       if(index===0){
-        clone.innerHTML='<span class="stickyGuideTitle">Comparando</span><small class="stickyGuideHint">colunas alinhadas</small>';
+        clone.innerHTML='<span class="stickyGuideTitle">Comparando</span>';
       }else{
         const name=cell.textContent.trim();
         clone.textContent='';
         clone.append(createElement('span','stickyModelIndex',String(index).padStart(2,'0')));
         const label=createElement('span','stickyModelName',name);
-        label.append(createElement('small','stickyModelHint','modelo selecionado'));
         clone.append(label);
       }
     });
