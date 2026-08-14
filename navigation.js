@@ -25,7 +25,12 @@
       section,
       top:section.getBoundingClientRect().top+window.scrollY
     })).sort((a,b)=>a.top-b.top);
-    const marker=window.scrollY+header.offsetHeight+Math.min(window.innerHeight*.24,180);
+    const compareStart=document.querySelector('#comparar')?.getBoundingClientRect().top+window.scrollY;
+    if(compareStart&&window.scrollY+header.offsetHeight+18<compareStart){
+      setActive('inicio');
+      return;
+    }
+    const marker=window.scrollY+Math.max(header.offsetHeight+80,window.innerHeight-120);
     let current=ordered[0].section;
     for(const item of ordered){
       if(item.top<=marker)current=item.section;
