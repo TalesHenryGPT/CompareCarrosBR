@@ -121,19 +121,9 @@ body.layout03{
 .layout03 .suvSketch .suvHeadlight{animation:l3SuvLight 2.2s ease-in-out infinite}
 .layout03 .suvSketch .suvBolt{transform-box:fill-box;transform-origin:center;filter:drop-shadow(0 0 9px rgba(255,212,59,.5));animation:l3SuvEnergy 2.8s ease-in-out infinite}
 .layout03 .suvSketch .suvTrail{opacity:.56;stroke-dasharray:18 18;animation:l3SuvTrail 2.5s linear infinite}
-.layout03 .suvSketch .suvDriverCat{transform-box:fill-box;transform-origin:52% 70%;animation:l3PassengerIdle 3.8s ease-in-out infinite}
+.layout03 .suvSketch .suvDriverCat{transform-box:fill-box;transform-origin:52% 70%;animation:l3CatCounterLook 8s ease-in-out infinite}
 .layout03 .suvSketch .suvCatPupil{transform-box:fill-box;transform-origin:center;animation:l3CatCounterGaze 8s ease-in-out infinite}
-.layout03 .suvSketch .suvRearDog{transform-box:fill-box;transform-origin:52% 72%;animation:l3PassengerIdle 3.8s ease-in-out -.9s infinite}
-.layout03 .suvSketch .suvDogHeadFront,.layout03 .suvSketch .suvCatHeadFront,.layout03 .suvSketch .suvDogHeadProfile,.layout03 .suvSketch .suvCatHeadProfile{transform-box:fill-box;will-change:transform,opacity;filter:url(#animalDepth)}
-.layout03 .suvSketch .suvDogHeadProfile,.layout03 .suvSketch .suvCatHeadProfile{opacity:0}
-.layout03 .suvSketch .suvDogBody,.layout03 .suvSketch .suvCatBody{filter:drop-shadow(0 3px 3px rgba(0,10,6,.45))}
-.layout03 .suvSketch .suvAnimalFurGlow{mix-blend-mode:screen}
-.layout03 .suvSketch .suvEyeShine{filter:drop-shadow(0 0 2px rgba(255,255,255,.9));animation:l3EyeSpark 2.4s ease-in-out infinite}
-.layout03 .suvSketch .suvNoseShine{opacity:.78}
-.layout03 .suvSketch .suvDogHeadFront{transform-origin:70% 72%;animation:l3DogFrontView 8s cubic-bezier(.45,.05,.55,.95) infinite}
-.layout03 .suvSketch .suvDogHeadProfile{transform-origin:62% 72%;animation:l3DogProfileView 8s cubic-bezier(.45,.05,.55,.95) infinite}
-.layout03 .suvSketch .suvCatHeadFront{transform-origin:70% 72%;animation:l3CatFrontView 8s cubic-bezier(.45,.05,.55,.95) infinite}
-.layout03 .suvSketch .suvCatHeadProfile{transform-origin:62% 72%;animation:l3CatProfileView 8s cubic-bezier(.45,.05,.55,.95) infinite}
+.layout03 .suvSketch .suvRearDog{transform-box:fill-box;transform-origin:52% 72%;animation:l3DogLook 8s ease-in-out infinite}
 .layout03 .suvSketch .suvDogHead{filter:drop-shadow(0 2px 3px rgba(0,0,0,.24))}
 .layout03 .suvSketch .suvDogEyes{transform-box:fill-box;transform-origin:center;animation:l3DogBlink 6.6s step-end infinite}
 .layout03 .suvSketch .suvDogPupil{transform-box:fill-box;transform-origin:center;animation:l3DogGaze 8s ease-in-out infinite}
@@ -278,14 +268,10 @@ body.layout03{
 .motion-ready [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.8,.2,1)}
 .motion-ready [data-reveal].is-visible{opacity:1;transform:none}
 
-@keyframes l3PassengerIdle{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.5px)}}
-@keyframes l3DogFrontView{0%,8%,30%,100%{opacity:1;transform:translate3d(0,0,7px) scale(1)}40%,80%{opacity:0;transform:translate3d(5px,0,7px) scaleX(.74) scaleY(.98)}90%{opacity:1;transform:translate3d(0,0,7px) scale(1)}}
-@keyframes l3DogProfileView{0%,8%,30%,100%{opacity:0;transform:translate3d(-3px,0,5px) scale(.88)}40%,80%{opacity:1;transform:translate3d(0,0,9px) scale(1)}90%{opacity:0;transform:translate3d(-3px,0,5px) scale(.88)}}
-@keyframes l3CatFrontView{0%,8%,30%,100%{opacity:0;transform:translate3d(5px,0,7px) scaleX(.74) scaleY(.98)}40%,80%{opacity:1;transform:translate3d(0,0,7px) scale(1)}90%{opacity:0;transform:translate3d(5px,0,7px) scaleX(.74) scaleY(.98)}}
-@keyframes l3CatProfileView{0%,8%,30%,100%{opacity:1;transform:translate3d(0,0,9px) scale(1)}40%,80%{opacity:0;transform:translate3d(-3px,0,5px) scale(.88)}90%{opacity:1;transform:translate3d(0,0,9px) scale(1)}}
-@keyframes l3DogGaze{0%,8%,32%,100%{transform:translateX(0)}44%,78%{transform:translateX(2.5px)}90%{transform:translateX(0)}}
-@keyframes l3CatCounterGaze{0%,8%,32%,100%{transform:translateX(2.5px)}44%,78%{transform:translateX(0)}90%{transform:translateX(2.5px)}}
-@keyframes l3EyeSpark{0%,100%{opacity:.62}50%{opacity:1}}
+@keyframes l3DogLook{0%,8%,38%,100%{transform:translate3d(-3px,0,0) rotate(-2.1deg)}50%,78%{transform:translate3d(4px,-1px,0) rotate(2.4deg)}}
+@keyframes l3CatCounterLook{0%,8%,38%,100%{transform:translate3d(3px,-1px,0) rotate(2deg)}50%,78%{transform:translate3d(-3px,0,0) rotate(-2.2deg)}}
+@keyframes l3DogGaze{0%,8%,38%,100%{transform:translateX(-2px)}50%,78%{transform:translateX(2px)}}
+@keyframes l3CatCounterGaze{0%,8%,38%,100%{transform:translateX(2px)}50%,78%{transform:translateX(-2px)}}
 @keyframes l3DogBlink{0%,46%,49%,100%{transform:scaleY(1)}47%,48%{transform:scaleY(.08)}}
 @keyframes l3DogHappy{0%,100%{transform:scaleY(.94) rotate(-1deg)}50%{transform:scaleY(1.08) rotate(1deg)}}
 @keyframes l3CatBlink{0%,43%,46%,78%,81%,100%{transform:scaleY(1)}44%,45%,79%,80%{transform:scaleY(.08)}}
