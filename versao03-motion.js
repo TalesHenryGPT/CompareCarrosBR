@@ -303,16 +303,123 @@
     },{threshold:.04,rootMargin:'0px 0px -3% 0px'});
   }
 
+  let columnOrder=[];
+  let columnDrag=null;
+
+  function columnKeys(table){
+    return [...table.tHead.rows[0].cells].slice(1).map(cell=>cell.textContent.trim());
+  }
+
+  function updateColumnOrder(table){
+    columnOrder=columnKeys(table);
+  }
+
+  function applyColumnOrder(table){
+    if(!columnOrder.length)return;
+    const header=[...table.tHead.rows[0].cells];
+    const current=header.slice(1).map(cell=>cell.textContent.trim());
+    const desired=[...columnOrder.filter(key=>current.includes(key)),...current.filter(key=>!columnOrder.includes(key))];
+    desired.forEach((key,targetIndex)=>{
+      const sourceIndex=[...table.tHead.rows[0].cells].slice(1).findIndex(cell=>cell.textContent.trim()===key);
+      if(sourceIndex===targetIndex)return;
+      [...table.rows].forEach(row=>{
+        const source=row.cells[sourceIndex+1];
+        const reference=row.cells[targetIndex+1];
+        if(source&&reference)row.insertBefore(source,reference);
+      });
+    });
+    updateColumnOrder(table);
+  }
+
+  function cellsForColumn(table,index){
+    return [...table.rows].map(row=>row.cells[index]).filter(Boolean);
+  }
+
+  function clearColumnDragStyles(){
+    document.querySelectorAll('.column-dragging,.column-drag-target').forEach(cell=>cell.classList.remove('column-dragging','column-drag-target'));
+  }
+
+  function refreshStickyAfterReorder(table){
+    buildInsights();
+    requestAnimationFrame(()=>buildStickyComparison(tableData()));
+  }
+
+  function reorderColumn(table,fromIndex,toIndex,after){
+    if(fromIndex===toIndex&&!after)return;
+    [...table.rows].forEach(row=>{
+      const source=row.cells[fromIndex];
+      const target=row.cells[toIndex];
+      if(!source||!target)return;
+      row.insertBefore(source,after?target.nextSibling:target);
+    });
+    updateColumnOrder(table);
+    refreshStickyAfterReorder(table);
+  }
+
+  function attachColumnReorder(table){
+    if(table.dataset.columnReorderReady==='true')return;
+    table.dataset.columnReorderReady='true';
+    table.addEventListener('pointerdown',event=>{
+      const cell=event.target.closest('th,td');
+      if(!cell||!table.contains(cell)||cell.cellIndex===0||event.button!==0)return;
+      const headerCell=table.tHead.rows[0].cells[cell.cellIndex];
+      columnDrag={table,fromIndex:cell.cellIndex,pointerId:event.pointerId,name:headerCell.textContent.trim(),started:false,targetIndex:null,after:false,hint:null};
+      cell.setPointerCapture?.(event.pointerId);
+    });
+    table.addEventListener('pointermove',event=>{
+      if(!columnDrag||columnDrag.table!==table||columnDrag.pointerId!==event.pointerId)return;
+      const dx=event.clientX-(event.movementX||event.clientX);
+      if(!columnDrag.started){
+        if(Math.abs(event.movementX||0)<3)return;
+        columnDrag.started=true;
+        document.body.classList.add('column-reordering');
+        cellsForColumn(table,columnDrag.fromIndex).forEach(cell=>cell.classList.add('column-dragging'));
+        const hint=createElement('div','comparisonColumnDragHint',columnDrag.name);
+        document.body.append(hint);
+        columnDrag.hint=hint;
+      }
+      event.preventDefault();
+      if(columnDrag.hint){
+        columnDrag.hint.style.left=Math.min(window.innerWidth-230,Math.max(12,event.clientX+14))+'px';
+        columnDrag.hint.style.top=Math.max(12,event.clientY+14)+'px';
+      }
+      const target=document.elementFromPoint(event.clientX,event.clientY)?.closest?.('th,td');
+      clearColumnDragStyles();
+      cellsForColumn(table,columnDrag.fromIndex).forEach(cell=>cell.classList.add('column-dragging'));
+      if(!target||!table.contains(target)||target.cellIndex===0)return;
+      columnDrag.targetIndex=target.cellIndex;
+      const rect=target.getBoundingClientRect();
+      columnDrag.after=event.clientX>rect.left+rect.width/2;
+      cellsForColumn(table,target.cellIndex).forEach(item=>item.classList.add('column-drag-target'));
+    });
+    const complete=event=>{
+      if(!columnDrag||columnDrag.table!==table||columnDrag.pointerId!==event.pointerId)return;
+      const drag=columnDrag;
+      columnDrag=null;
+      drag.hint?.remove();
+      document.body.classList.remove('column-reordering');
+      clearColumnDragStyles();
+      if(drag.started&&drag.targetIndex&&drag.targetIndex!==drag.fromIndex){
+        reorderColumn(table,drag.fromIndex,drag.targetIndex,drag.after);
+      }
+    };
+    table.addEventListener('pointerup',complete);
+    table.addEventListener('pointercancel',complete);
+  }
+
   function animateTable(){
     const data=tableData();
     if(!data){removeStickyComparison();return}
-    data.rows.forEach((row,index)=>{
+    applyColumnOrder(data.table);
+    const orderedData=tableData();
+    orderedData.rows.forEach((row,index)=>{
       row.classList.add('row-motion');
       row.style.transitionDelay=`${Math.min((index%8)*38,266)}ms`;
       if(rowObserver)rowObserver.observe(row);else row.classList.add('is-visible');
     });
+    attachColumnReorder(orderedData.table);
     buildInsights();
-    requestAnimationFrame(()=>buildStickyComparison(data));
+    requestAnimationFrame(()=>buildStickyComparison(orderedData));
   }
 
   const summaryObserver=summary?new MutationObserver(()=>animateSummary()):null;
