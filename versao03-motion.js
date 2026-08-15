@@ -404,6 +404,37 @@
     };
     table.addEventListener('pointerup',complete);
     table.addEventListener('pointercancel',complete);
+
+    let nativeDrag=null;
+    [...table.querySelectorAll('th:not(:first-child),td:not(:first-child)')].forEach(cell=>cell.draggable=true);
+    table.addEventListener('dragstart',event=>{
+      const cell=event.target.closest('th,td');
+      if(!cell||cell.cellIndex===0)return;
+      nativeDrag={fromIndex:cell.cellIndex,table};
+      event.dataTransfer.effectAllowed='move';
+      cellsForColumn(table,cell.cellIndex).forEach(item=>item.classList.add('column-dragging'));
+    });
+    table.addEventListener('dragover',event=>{
+      const cell=event.target.closest('th,td');
+      if(!nativeDrag||!cell||cell.cellIndex===0)return;
+      event.preventDefault();
+      clearColumnDragStyles();
+      cellsForColumn(table,nativeDrag.fromIndex).forEach(item=>item.classList.add('column-dragging'));
+      cellsForColumn(table,cell.cellIndex).forEach(item=>item.classList.add('column-drag-target'));
+    });
+    table.addEventListener('drop',event=>{
+      const cell=event.target.closest('th,td');
+      if(!nativeDrag||!cell||cell.cellIndex===0)return;
+      event.preventDefault();
+      const rect=cell.getBoundingClientRect();
+      const after=event.clientX>rect.left+rect.width/2;
+      const from=nativeDrag.fromIndex,to=cell.cellIndex;
+      nativeDrag=null;
+      clearColumnDragStyles();
+      if(from!==to)reorderColumn(table,from,to,after);
+    });
+    table.addEventListener('dragend',()=>{nativeDrag=null;clearColumnDragStyles();});
+
   }
 
   function animateTable(){
