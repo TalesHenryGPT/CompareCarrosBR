@@ -363,14 +363,13 @@
       const cell=event.target.closest('th,td');
       if(!cell||!table.contains(cell)||cell.cellIndex===0||event.button!==0)return;
       const headerCell=table.tHead.rows[0].cells[cell.cellIndex];
-      columnDrag={table,fromIndex:cell.cellIndex,pointerId:event.pointerId,name:headerCell.textContent.trim(),started:false,targetIndex:null,after:false,hint:null};
+      columnDrag={table,fromIndex:cell.cellIndex,pointerId:event.pointerId,name:headerCell.textContent.trim(),started:false,targetIndex:null,after:false,hint:null,startX:event.clientX,startY:event.clientY};
       cell.setPointerCapture?.(event.pointerId);
     });
     table.addEventListener('pointermove',event=>{
       if(!columnDrag||columnDrag.table!==table||columnDrag.pointerId!==event.pointerId)return;
-      const dx=event.clientX-(event.movementX||event.clientX);
       if(!columnDrag.started){
-        if(Math.abs(event.movementX||0)<3)return;
+        if(Math.hypot(event.clientX-columnDrag.startX,event.clientY-columnDrag.startY)<8)return;
         columnDrag.started=true;
         document.body.classList.add('column-reordering');
         cellsForColumn(table,columnDrag.fromIndex).forEach(cell=>cell.classList.add('column-dragging'));
