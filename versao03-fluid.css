@@ -146,7 +146,7 @@ body.layout04{
 }
 .layout04 .floatMetric small{display:block;color:var(--l3-muted);font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
 .layout04 .floatMetric strong{display:block;margin-top:6px;font-family:var(--l3-display);font-size:20px;letter-spacing:-.035em}
-.layout04 .metricOne{right:-3%;top:8%;animation:l3Float 5s ease-in-out infinite}
+.layout04 .metricOne{right:-15%;top:8%;animation:l3Float 5s ease-in-out infinite}
 .layout04 .metricTwo{left:-5%;bottom:9%;animation:l3Float 6s ease-in-out -1.8s infinite}
 .layout04 .metricDot{display:inline-block;width:8px;height:8px;margin-right:6px;border-radius:50%;background:var(--l3-green-2);box-shadow:0 0 0 5px rgba(22,160,93,.12)}
 
