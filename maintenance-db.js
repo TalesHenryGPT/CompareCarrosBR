@@ -92,5 +92,6 @@ const MAINTENANCE_DB=(()=>{
     return fixed(10000,12,'#','Confirmar o intervalo no manual do ano-modelo.');
   }
 
-  return{forCar};
+  const costForCar=()=>null; // Preço só entra após validação de tabela oficial por versão.
+  return{forCar,costForCar};
 })();
