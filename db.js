@@ -3,7 +3,7 @@ const C=[["Audi","A3 Sedan Advanced 2.0 - 16V 2026","Combustão a Gasolina",2640
 D.push(...C);
 
 const TECH_SPECS={
-'Chevrolet|Spark EUV 41,9 kWh':{torque:18.4,weight:1345,trunk:355},
-'Renault|Kwid E-Tech':{topSpeed:130,weight:969,trunk:290},
-'BYD|Dolphin GS':{trunk:345}
+'Chevrolet|Spark EUV 41,9 kWh':{torque:18.4,weight:1345,trunk:355,electrification:{inmetroRange:258,battery:42,chargeTime:'30% a 80% em 35 min (DC)',batteryWarranty:'Não informado pela fabricante',spareAndTires:'Não informado pela fabricante',v2l:'Não informado pela fabricante'}},
+'Renault|Kwid E-Tech':{topSpeed:130,weight:969,trunk:290,electrification:{inmetroRange:180,battery:26.8,batteryWarranty:'Não informado pela fabricante',spareAndTires:'Não informado pela fabricante',v2l:'Não informado pela fabricante'}},
+'BYD|Dolphin GS':{trunk:345,electrification:{inmetroRange:292,battery:44.9,batteryWarranty:'8 anos ou 200.000 km',connector:'CCS2',v2l:'Não informado pela fabricante'}}
 };
