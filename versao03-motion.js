@@ -137,11 +137,11 @@
 
   function buildCostChart(card,data){
     const categories=[
-      ['Seguro',label=>label==='Seguro anual'],
+      ['Seguro',label=>label==='Estimativa de seguro anual'],
       ['Manutenção',label=>label.startsWith('Revisão/Manutenção Anual')],
       ['IPVA',label=>label==='IPVA anual'],
-      ['Energia',label=>label==='Energia anual'],
-      ['Combustível',label=>label==='Combustível anual']
+      ['Energia',label=>label==='Custo com energia anual'],
+      ['Combustível',label=>label==='Custo com combustível anual']
     ];
     const series=categories.map(([,test])=>data.valuesByLabel(test));
     if(!series.some(values=>values.length))return false;
