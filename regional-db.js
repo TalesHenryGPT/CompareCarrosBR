@@ -1,14 +1,14 @@
 const REGIONAL_DB={
-  updatedAt:'13/08/2026',
+  updatedAt:'19/08/2026',
   states:{AC:'Acre',AL:'Alagoas',AP:'Amapá',AM:'Amazonas',BA:'Bahia',CE:'Ceará',DF:'Distrito Federal',ES:'Espírito Santo',GO:'Goiás',MA:'Maranhão',MT:'Mato Grosso',MS:'Mato Grosso do Sul',MG:'Minas Gerais',PA:'Pará',PB:'Paraíba',PR:'Paraná',PE:'Pernambuco',PI:'Piauí',RJ:'Rio de Janeiro',RN:'Rio Grande do Norte',RS:'Rio Grande do Sul',RO:'Rondônia',RR:'Roraima',SC:'Santa Catarina',SP:'São Paulo',SE:'Sergipe',TO:'Tocantins'},
   sources:{
-    fuel:{label:'ANP — Levantamento de Preços de Combustíveis',url:'https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/levantamento-de-precos-de-combustiveis-ultimas-semanas-pesquisadas',reference:'02/08/2026 a 08/08/2026'},
+    fuel:{label:'ANP — Levantamento de Preços de Combustíveis',url:'https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/levantamento-de-precos-de-combustiveis-ultimas-semanas-pesquisadas',reference:'09/08/2026 a 15/08/2026 — planilha publicada em 14/08/2026'},
     energy:{label:'ANEEL — Tarifas Homologadas de Distribuidoras',url:'https://dadosabertos.aneel.gov.br/dataset/tarifas-distribuidoras-energia-eletrica',reference:'tarifa B1 residencial convencional vigente em 13/08/2026'},
     flags:{label:'ANEEL — Bandeiras Tarifárias',url:'https://www.gov.br/aneel/pt-br/assuntos/tarifas/bandeiras-tarifarias',reference:'bandeira amarela em agosto/2026'},
     insurance:{label:'SUSEP — Base anonimizada de seguro automóvel',url:'https://www.gov.br/susep/pt-br/central-de-conteudos/dados-estatisticos/bases-anonimizadas/bases_auto',reference:'R_AUTO 2021A: prêmio de casco/valor segurado para passeio PF, indexado a MG = 1,00; cotação individual prevalece'}
   },
   fuel:{
-    AC:{gas:7.26,eth:4.97},AL:{gas:6.76,eth:5.02},AP:{gas:6.67,eth:null},AM:{gas:7.31,eth:5.00},BA:{gas:6.93,eth:4.66},CE:{gas:6.67,eth:4.85},DF:{gas:6.51,eth:4.15},ES:{gas:6.52,eth:4.66},GO:{gas:6.64,eth:4.20},MA:{gas:6.71,eth:5.06},MT:{gas:6.73,eth:3.71},MS:{gas:6.43,eth:3.90},MG:{gas:6.19,eth:3.94},PA:{gas:6.69,eth:4.73},PB:{gas:6.47,eth:4.72},PR:{gas:6.66,eth:4.13},PE:{gas:6.90,eth:5.08},PI:{gas:6.86,eth:4.87},RJ:{gas:6.61,eth:4.72},RN:{gas:6.79,eth:5.23},RS:{gas:6.28,eth:4.48},RO:{gas:7.36,eth:5.26},RR:{gas:7.57,eth:5.41},SC:{gas:6.53,eth:4.45},SP:{gas:6.35,eth:3.63},SE:{gas:7.03,eth:5.34},TO:{gas:7.07,eth:5.04}
+    AC:{gas:7.45,eth:5.00},AL:{gas:6.75,eth:5.01},AP:{gas:6.60,eth:null},AM:{gas:7.31,eth:4.96},BA:{gas:6.85,eth:4.58},CE:{gas:6.61,eth:4.84},DF:{gas:6.59,eth:4.23},ES:{gas:6.52,eth:4.65},GO:{gas:6.65,eth:4.27},MA:{gas:6.70,eth:5.03},MT:{gas:6.72,eth:3.70},MS:{gas:6.43,eth:3.88},MG:{gas:6.18,eth:3.77},PA:{gas:6.66,eth:4.70},PB:{gas:6.46,eth:4.71},PR:{gas:6.64,eth:4.10},PE:{gas:6.84,eth:5.06},PI:{gas:6.86,eth:4.85},RJ:{gas:6.62,eth:4.69},RN:{gas:6.75,eth:5.14},RS:{gas:6.26,eth:4.42},RO:{gas:7.36,eth:5.25},RR:{gas:7.57,eth:5.41},SC:{gas:6.52,eth:4.43},SP:{gas:6.35,eth:3.61},SE:{gas:7.02,eth:5.33},TO:{gas:7.02,eth:5.01}
   },
   energyFlags:{green:{label:'Verde',surcharge:0},yellow:{label:'Amarela (ago/2026)',surcharge:.01885},red1:{label:'Vermelha patamar 1',surcharge:.04463},red2:{label:'Vermelha patamar 2',surcharge:.07877}},
   currentFlag:'yellow',
