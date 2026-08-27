@@ -139,6 +139,7 @@
       const track=createElement('div','chartTrack');
       const fill=createElement('div',`chartFill${tco[index]===min?' is-best':''}`);
       fill.style.setProperty('--bar-width',`${Math.max(8,(tco[index]/max)*100)}%`);
+      fill.style.transitionDelay=`${index*90}ms`;
       track.append(fill);
       row.append(head,track);
       if(tco[index]!==max){
@@ -169,10 +170,11 @@
       const head=createElement('div','chartRowHead');
       head.append(createElement('strong','',name),createElement('span','',moneyFormat.format(total)+'/ano'));
       const track=createElement('div','stackTrack');
-      costs.forEach(value=>{
+      costs.forEach((value,catIndex)=>{
         const segment=createElement('span','stackSegment');
         segment.style.setProperty('--segment-width',`${(value/total)*100}%`);
-        segment.title=moneyFormat.format(value);
+        segment.style.transitionDelay=`${index*90}ms`;
+        segment.dataset.tooltip=`${categories[catIndex][0]}: ${moneyFormat.format(value)}`;
         track.append(segment);
       });
       row.append(head,track);
