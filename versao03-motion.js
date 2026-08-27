@@ -10,6 +10,28 @@
 
   body.classList.add('motion-ready');
 
+  function splitHeadlineWords(el){
+    if(!el||el.dataset.split)return;
+    el.dataset.split='true';
+    const text=el.textContent;
+    el.setAttribute('aria-label',text);
+    const words=text.split(' ');
+    el.innerHTML='';
+    words.forEach((word,i)=>{
+      const mask=document.createElement('span');
+      mask.className='wordMask';
+      mask.setAttribute('aria-hidden','true');
+      const inner=document.createElement('span');
+      inner.className='wordInner';
+      inner.textContent=word;
+      inner.style.transitionDelay=`${i*55}ms`;
+      mask.append(inner);
+      el.append(mask);
+      if(i<words.length-1)el.append(' ');
+    });
+  }
+  if(!reduceMotion)splitHeadlineWords(document.querySelector('#comparar .sectionHead h1'));
+
   const heroVisual = document.querySelector('.heroVisual');
   const pointerFine=window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
