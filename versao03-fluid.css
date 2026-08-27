@@ -158,24 +158,12 @@ body.layout04{
 
 .layout04 .compareSection{padding:94px 8px 0}
 .layout04 .sectionHead{max-width:820px;margin:0 auto 46px;position:relative}
-.layout04 .headlineFlow{display:block;width:min(620px,86%);height:56px;margin:18px auto 0;overflow:visible;animation:headlineFlowBob 5.5s ease-in-out infinite}
-.layout04 .headlineFlowPath{stroke:var(--l3-deep);stroke-width:5;stroke-dasharray:2600;stroke-dashoffset:2600;transition:stroke-dashoffset 1.5s cubic-bezier(.16,.8,.24,1) .25s}
-.layout04 .headlineFlowShimmer{stroke:var(--l3-lime);stroke-width:5;opacity:0;stroke-dasharray:46 320;stroke-dashoffset:0;transition:opacity .4s ease 1.5s}
 .layout04 .sectionHead h1 .wordMask{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
 .layout04 .sectionHead h1 .wordInner{display:inline-block;transform:translateY(112%);transition:transform .85s cubic-bezier(.16,.8,.24,1)}
 .motion-ready .sectionHead.is-visible .wordInner{transform:translateY(0)}
 @media(prefers-reduced-motion:reduce){.layout04 .sectionHead h1 .wordInner{transition:none;transform:none}}
-.motion-ready .sectionHead.is-visible .headlineFlowPath{stroke-dashoffset:0}
-.motion-ready .sectionHead.is-visible .headlineFlowShimmer{opacity:.85;animation:headlineFlowShimmer 3.4s linear infinite 1.5s}
-@keyframes headlineFlowBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-@keyframes headlineFlowShimmer{to{stroke-dashoffset:-366}}
-@media(prefers-reduced-motion:reduce){
-.layout04 .headlineFlow{animation:none}
-.layout04 .headlineFlowPath{transition:none;stroke-dashoffset:0}
-.layout04 .headlineFlowShimmer{animation:none;opacity:0}
-}
 .layout04 .sectionKicker{margin-bottom:14px;color:var(--l3-green)}
-.layout04 .sectionHead h1{font-family:var(--l3-display);font-size:clamp(38px,4.4vw,66px);font-weight:720;line-height:1;letter-spacing:-.055em;text-wrap:balance}
+.layout04 .sectionHead h1{font-family:var(--l3-body);font-size:clamp(22px,2.6vw,34px);font-weight:600;line-height:1.35;letter-spacing:-.01em;text-wrap:balance}
 .layout04 .sectionHead p{max-width:620px;margin:16px auto 0;color:var(--l3-muted);font-size:18px;line-height:1.55}
 .layout04 .selectors{gap:22px;perspective:1200px}
 .layout04 .selectCard{
@@ -449,7 +437,7 @@ body.layout04{
   .layout04 .visualShell{border-radius:30px!important;animation:none}
   .layout04 .floatMetric{min-width:132px;padding:12px}.layout04 .floatMetric strong{font-size:15px}
   .layout04 .metricOne{right:-3%;top:2%}.layout04 .metricTwo{left:-3%;bottom:3%}
-  .layout04 .sectionHead h1{font-size:40px}
+  .layout04 .sectionHead h1{font-size:24px}
   .layout04 .selectors{grid-template-columns:1fr}
   .layout04 .selectCard{min-height:0}
   .layout04 .infobar{display:grid;grid-template-columns:1fr}
