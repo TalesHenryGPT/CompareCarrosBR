@@ -10,6 +10,22 @@
 
   body.classList.add('motion-ready');
 
+  const heroVisual = document.querySelector('.heroVisual');
+  if(heroVisual&&!reduceMotion&&window.matchMedia('(hover: hover) and (pointer: fine)').matches){
+    const maxTilt=9;
+    heroVisual.addEventListener('pointermove',event=>{
+      const rect=heroVisual.getBoundingClientRect();
+      const px=(event.clientX-rect.left)/rect.width-.5;
+      const py=(event.clientY-rect.top)/rect.height-.5;
+      const rotateY=px*maxTilt*2;
+      const rotateX=-py*maxTilt*2;
+      heroVisual.style.transform=`perspective(900px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateZ(6px)`;
+    });
+    heroVisual.addEventListener('pointerleave',()=>{
+      heroVisual.style.transform='';
+    });
+  }
+
   const updateHeader=()=>header?.classList.toggle('is-scrolled',window.scrollY>18);
   window.addEventListener('scroll',updateHeader,{passive:true});
   updateHeader();
@@ -474,3 +490,4 @@
   if(summary?.children.length)animateSummary();
   if(tableWrap?.querySelector('table'))animateTable();
 })();
+
