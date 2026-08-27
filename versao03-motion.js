@@ -160,6 +160,7 @@
       ['Energia',label=>label==='Custo com energia anual'],
       ['Combustível',label=>label==='Custo com combustível anual']
     ];
+    const colors=['#075b2b','#20a560','#ffd43b','#83d7a7','#d9ff6d'];
     const series=categories.map(([,test])=>data.valuesByLabel(test));
     if(!series.some(values=>values.length))return false;
     const list=createElement('div','chartList');
@@ -173,15 +174,15 @@
       costs.forEach((value,catIndex)=>{
         const segment=createElement('span','stackSegment');
         segment.style.setProperty('--segment-width',`${(value/total)*100}%`);
+        segment.style.setProperty('--tooltip-color',colors[catIndex]);
         segment.style.transitionDelay=`${index*90}ms`;
-        segment.dataset.tooltip=`${categories[catIndex][0]}: ${moneyFormat.format(value)}`;
+        segment.dataset.tooltip=`${categories[catIndex][0]}: ${moneyFormat.format(value)}/ano`;
         track.append(segment);
       });
       row.append(head,track);
       list.append(row);
     });
     const legend=createElement('div','chartLegend');
-    const colors=['#075b2b','#20a560','#ffd43b','#83d7a7','#d9ff6d'];
     categories.forEach(([name],index)=>{
       const item=createElement('span','',name);
       item.style.setProperty('--legend',colors[index]);
