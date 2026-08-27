@@ -166,7 +166,30 @@ body.layout04{
 .layout04 .selectCard.selection-pulse{animation:l3Select .55s ease}
 .layout04 .cardTitle{margin-bottom:18px}
 .layout04 .cardTitle strong{font-family:var(--l3-display);font-size:18px;letter-spacing:-.025em}
-.layout04 .carIcon{width:46px;height:46px;background:var(--l3-deep);color:var(--l3-lime);font-size:14px;box-shadow:0 10px 25px rgba(6,58,41,.14)}
+.layout04 .carIcon{width:52px;height:52px;background:radial-gradient(circle at 32% 28%,#0f4a2c,var(--l3-deep) 70%);box-shadow:0 10px 22px rgba(6,58,41,.24),inset 0 0 0 1px rgba(217,255,109,.14);display:grid;place-items:center;overflow:hidden;position:relative;transform-style:preserve-3d;animation:carIconFloat 4.2s ease-in-out infinite}
+.layout04 .carIcon::before{content:"";position:absolute;inset:-30%;background:radial-gradient(circle,rgba(217,255,109,.35),transparent 65%);opacity:0;transition:opacity .35s ease}
+.layout04 .carIcon::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(115deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);opacity:0}
+.carIconSvg{width:38px;height:23px;overflow:visible;filter:drop-shadow(0 3px 3px rgba(0,0,0,.35));transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.carIconBody{fill:url(#carIconBodyGrad)}
+.carIconGlass{fill:url(#carIconGlassGrad)}
+.carIconStripe{fill:none;stroke:rgba(255,255,255,.5);stroke-width:1.6;stroke-linecap:round}
+.carIconShadow{fill:#03110b;opacity:.4;filter:blur(1.5px)}
+.carIconWheel{fill:url(#carIconWheelGrad);stroke:var(--l3-lime);stroke-width:1.2;transform-box:fill-box;transform-origin:center;animation:carIconIdleSpin 5s linear infinite}
+.carIconRim{fill:#ffd43b;transform-box:fill-box;transform-origin:center;animation:carIconIdleSpin 5s linear infinite}
+.layout04 .selectCard:hover .carIcon,.layout04 .selectCard.is-selected .carIcon{animation-play-state:paused}
+.layout04 .selectCard:hover .carIcon::before{opacity:1}
+.layout04 .selectCard:hover .carIcon::after{animation:carIconShine .9s ease forwards}
+.layout04 .selectCard:hover .carIconSvg{transform:rotateY(-18deg) translateY(-3px) scale(1.08)}
+.layout04 .selectCard.selection-pulse .carIconSvg{animation:carIconDriveIn .6s cubic-bezier(.2,.8,.2,1)}
+.layout04 .selectCard.selection-pulse .carIconWheel,.layout04 .selectCard.selection-pulse .carIconRim{animation:carIconIdleSpin .5s linear}
+.layout04 .selectCard.selection-pulse .carIcon::after{animation:carIconShine .7s ease .1s}
+@keyframes carIconFloat{0%,100%{transform:translateY(0) rotateY(0deg)}50%{transform:translateY(-3px) rotateY(6deg)}}
+@keyframes carIconIdleSpin{to{transform:rotate(360deg)}}
+@keyframes carIconDriveIn{0%{transform:translateX(-16px) rotateY(0);opacity:.2}60%{transform:translateX(2px) rotateY(-10deg)}100%{transform:translateX(0) rotateY(0);opacity:1}}
+@keyframes carIconShine{0%{left:-60%;opacity:0}15%{opacity:1}100%{left:120%;opacity:0}}
+@media(prefers-reduced-motion:reduce){
+.layout04 .carIcon,.carIconWheel,.carIconRim,.layout04 .selectCard.selection-pulse .carIconSvg,.layout04 .selectCard:hover .carIconSvg{animation:none;transform:none}
+}
 .layout04 .modelPickerButton{min-height:56px;border-color:rgba(16,34,26,.12)!important;border-radius:14px!important;background:#fffefa!important;transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease!important}
 .layout04 .modelPickerButton:hover{transform:translateY(-2px);border-color:rgba(8,116,67,.42)!important;box-shadow:0 10px 24px rgba(8,116,67,.09)!important}
 .layout04 .modelPickerPanel{border-radius:20px;box-shadow:0 26px 70px rgba(6,58,41,.24)}
@@ -463,3 +486,4 @@ body.column-reordering{
 /* Transparência de dados */
 .dataTransparencyPanel{margin:28px 0;padding:0;border:1px solid rgba(5,47,35,.14);border-radius:22px;background:rgba(255,255,255,.72);box-shadow:0 14px 34px rgba(5,47,35,.07)}
 .dataTransparencyPanel summary{cursor:pointer;padding:18px 20px;color:#063d2b;font-weight:850;list-style:none}.dataTransparencyPanel summary::-webkit-details-marker{display:none}.dataTransparencyPanel summary span{margin-left:8px;color:#698074;font-size:.82em;font-weight:650}.dataTransparencyBody{padding:0 20px 20px;color:#385447;font-size:.9rem;line-height:1.55}.dataSealRow{display:flex;flex-wrap:wrap;align-items:center;gap:7px 9px;padding:14px 0;border-top:1px solid rgba(5,47,35,.1);border-bottom:1px solid rgba(5,47,35,.1)}.dataSeal{display:inline-flex;align-items:center;padding:3px 8px;border-radius:999px;font-size:.72rem;font-weight:850;white-space:nowrap}.dataSeal.official{background:#d8f5df;color:#075b2b}.dataSeal.estimate{background:#fff1be;color:#785d00}.dataSeal.unavailable{background:#edf0ef;color:#637068}.dataTransparencyBody dl{display:grid;grid-template-columns:minmax(150px,.7fr) 2fr;gap:10px 18px;margin:18px 0}.dataTransparencyBody dt{font-weight:800;color:#173f30}.dataTransparencyBody dd{margin:0}.dataTransparencyBody h3{font-size:1rem;margin:18px 0 6px}.dataTransparencyBody ul{margin:0;padding-left:18px}.dataVariability{margin:18px 0 0;padding:12px 14px;border-radius:13px;background:rgba(255,212,59,.16);color:#5f5000}.tcoExplain{width:18px;height:18px;margin-left:4px;border:0;border-radius:50%;background:#075b2b;color:#fff;font:800 12px/1 inherit;cursor:pointer;vertical-align:middle}@media(max-width:680px){.dataTransparencyBody dl{grid-template-columns:1fr}.dataTransparencyPanel summary span{display:block;margin:4px 0 0}.dataSealRow{align-items:flex-start}}
+

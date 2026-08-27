@@ -1,4 +1,28 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#ffffff"><title>CompareCarrosBR — Versão 03</title><meta name="description" content="Compare carros 0 km por custo total de propriedade, com premissas regionalizadas e visualização dinâmica."><link rel="stylesheet" href="styles.css?v=4"><link rel="stylesheet" href="regional.css"><link rel="stylesheet" href="navigation.css?v=4"><link rel="stylesheet" href="versao03-fluid.css?v=5"></head><body class="layout04">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<linearGradient id="carIconBodyGrad" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#d9ff6d"/><stop offset=".55" stop-color="#3fae63"/><stop offset="1" stop-color="#064023"/>
+</linearGradient>
+<linearGradient id="carIconGlassGrad" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#eafff0" stop-opacity=".9"/><stop offset="1" stop-color="#0a2e1c" stop-opacity=".75"/>
+</linearGradient>
+<radialGradient id="carIconWheelGrad" cx=".38" cy=".35" r=".7">
+<stop offset="0" stop-color="#3a6b4c"/><stop offset="1" stop-color="#061a10"/>
+</radialGradient>
+</defs>
+<symbol id="carIcon3D" viewBox="0 0 64 38">
+<ellipse class="carIconShadow" cx="32" cy="33" rx="26" ry="3.4"/>
+<path class="carIconBody" d="M6 25c.4-3.4 2.4-5.6 6.4-6.6l4-7.4c1.4-2.6 3.6-3.8 7-3.8h9c3.6 0 5.8 1.3 7.4 3.9l3.6 6c3.6.5 6.4 1.9 7.8 5l1.2 2.6-1.6 2.3H49c-.8 3.6-3.8 5.8-7.6 5.8s-6.7-2.1-7.5-5.6H24.6c-.8 3.5-3.8 5.6-7.5 5.6s-6.9-2.2-7.6-5.8H6.3L6 25Z"/>
+<path class="carIconGlass" d="M20 16.6l3-5.4c.9-1.6 2.1-2.3 4-2.3h4.6v7.7H20Z"/>
+<path class="carIconGlass" d="M34.6 8.9h3.8c2 0 3.2.7 4.3 2.2l3.1 5.5H34.6V8.9Z"/>
+<path class="carIconStripe" d="M13 17.6c4-1.8 7.4-2.2 11-2.4l4-7"/>
+<circle class="carIconWheel" cx="17.4" cy="27.4" r="5.2"/>
+<circle class="carIconWheel" cx="41.4" cy="27.4" r="5.2"/>
+<circle class="carIconRim" cx="17.4" cy="27.4" r="2.4"/>
+<circle class="carIconRim" cx="41.4" cy="27.4" r="2.4"/>
+</symbol>
+</svg>
 <header class="topbar"><div class="navwrap"><a class="brand" href="#inicio" aria-label="Compare Carros Brasil"><span class="ccmark">CC</span><span class="brandwords"><strong>COMPARE CARROS</strong><em>BRASIL</em></span></a><nav class="mainnav"><a class="active" href="#inicio">Início</a><a href="#comparar">Comparar</a><a href="#rankings">Rankings</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a></nav><a class="saved" href="#comparar"><span>▱</span> Meus Comparativos</a></div></header>
 <main><section id="inicio" class="hero" aria-label="Compare Carros Brasil">
 <div class="heroContent">
@@ -113,12 +137,12 @@
 </section>
 <section id="comparar" class="compareSection"><div class="sectionHead"><p class="sectionKicker">Monte seu cenário</p><h1>Compare com contexto, não apenas preço.</h1><p>Escolha até seis modelos e ajuste as premissas para enxergar o custo total da sua decisão.</p></div>
 <div id="selectors" class="selectors">
-<div class="selectCard"><div class="cardTitle"><span class="carIcon">▣</span><strong>Carro 1</strong></div><select aria-label="Carro 1"></select></div>
-<div class="selectCard"><div class="cardTitle"><span class="carIcon">▣</span><strong>Carro 2</strong></div><select aria-label="Carro 2"></select></div>
-<div class="selectCard"><div class="cardTitle"><span class="carIcon">▣</span><strong>Carro 3 <small>(opcional)</small></strong></div><select aria-label="Carro 3"></select></div>
-<div class="selectCard"><div class="cardTitle"><span class="carIcon">▣</span><strong>Carro 4 <small>(opcional)</small></strong></div><select aria-label="Carro 4"></select></div>
-<div class="selectCard"><div class="cardTitle"><span class="carIcon">▣</span><strong>Carro 5 <small>(opcional)</small></strong></div><select aria-label="Carro 5"></select></div>
-<div class="selectCard"><div class="cardTitle"><span class="carIcon">▣</span><strong>Carro 6 <small>(opcional)</small></strong></div><select aria-label="Carro 6"></select></div>
+<div class="selectCard"><div class="cardTitle"><span class="carIcon" aria-hidden="true"><svg class="carIconSvg" viewBox="0 0 64 38"><use href="#carIcon3D"/></svg></span><strong>Carro 1</strong></div><select aria-label="Carro 1"></select></div>
+<div class="selectCard"><div class="cardTitle"><span class="carIcon" aria-hidden="true"><svg class="carIconSvg" viewBox="0 0 64 38"><use href="#carIcon3D"/></svg></span><strong>Carro 2</strong></div><select aria-label="Carro 2"></select></div>
+<div class="selectCard"><div class="cardTitle"><span class="carIcon" aria-hidden="true"><svg class="carIconSvg" viewBox="0 0 64 38"><use href="#carIcon3D"/></svg></span><strong>Carro 3 <small>(opcional)</small></strong></div><select aria-label="Carro 3"></select></div>
+<div class="selectCard"><div class="cardTitle"><span class="carIcon" aria-hidden="true"><svg class="carIconSvg" viewBox="0 0 64 38"><use href="#carIcon3D"/></svg></span><strong>Carro 4 <small>(opcional)</small></strong></div><select aria-label="Carro 4"></select></div>
+<div class="selectCard"><div class="cardTitle"><span class="carIcon" aria-hidden="true"><svg class="carIconSvg" viewBox="0 0 64 38"><use href="#carIcon3D"/></svg></span><strong>Carro 5 <small>(opcional)</small></strong></div><select aria-label="Carro 5"></select></div>
+<div class="selectCard"><div class="cardTitle"><span class="carIcon" aria-hidden="true"><svg class="carIconSvg" viewBox="0 0 64 38"><use href="#carIcon3D"/></svg></span><strong>Carro 6 <small>(opcional)</small></strong></div><select aria-label="Carro 6"></select></div>
 </div>
 <div class="infobar"><span>🚙 Até 6 carros por comparação</span><span>📈 <b id="catalogCount">0</b> modelos disponíveis</span><span>🆕 Veículos 0 km • ano/modelo 2026 e 2027</span></div>
 <details class="premissas" open><summary>Premissas do cálculo</summary><div class="controls regionalControls">
@@ -150,3 +174,4 @@
 <p class="legalSmall">Aviso do protótipo: antes da abertura comercial, recomenda-se revisão jurídica final da política de privacidade, dos contratos com fornecedores e das licenças de todos os ativos utilizados.</p>
 </section>
 </section></main><footer id="contato" class="siteFooter" aria-label="Contato"><span>CompareCarrosBR • Versão 03</span><div class="footerLegal"><a href="mailto:contato@comparecarrosbrasil.com.br">contato@comparecarrosbrasil.com.br</a><a href="#privacidade">Privacidade e direitos</a></div></footer><script src="db.js?v=4"></script><script src="regional-db.js"></script><script src="maintenance-db.js?v=4"></script><script src="logic-versao03.js?v=8"></script><script src="navigation.js?v=4"></script><script src="versao03-motion.js?v=5"></script></body></html>
+
