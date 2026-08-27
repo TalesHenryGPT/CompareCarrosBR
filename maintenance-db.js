@@ -95,3 +95,4 @@ const MAINTENANCE_DB=(()=>{
   const costForCar=()=>null; // Preço só entra após validação de tabela oficial por versão.
   return{forCar,costForCar};
 })();
+

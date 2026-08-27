@@ -9,3 +9,4 @@
 .siteFooter a{color:#0a5b2b;font-weight:750;text-decoration:none;transition:color .28s ease}
 .siteFooter a:hover,.siteFooter a:focus-visible{color:#f6bd00}
 @media(max-width:680px){.siteFooter{flex-direction:column;gap:8px}}
+

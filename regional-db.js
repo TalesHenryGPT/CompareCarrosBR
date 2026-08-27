@@ -34,3 +34,4 @@ const REGIONAL_DB={
     TO:{url:'https://dtri.sefaz.to.gov.br/legislacao/ntributaria/Leis/Lei5.061.26.htm'}
   }
 };
+

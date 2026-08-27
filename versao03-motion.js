@@ -11,19 +11,37 @@
   body.classList.add('motion-ready');
 
   const heroVisual = document.querySelector('.heroVisual');
-  if(heroVisual&&!reduceMotion&&window.matchMedia('(hover: hover) and (pointer: fine)').matches){
-    const maxTilt=9;
-    heroVisual.addEventListener('pointermove',event=>{
-      const rect=heroVisual.getBoundingClientRect();
+  const pointerFine=window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  function applyTilt(el,maxTilt){
+    el.addEventListener('pointermove',event=>{
+      const rect=el.getBoundingClientRect();
       const px=(event.clientX-rect.left)/rect.width-.5;
       const py=(event.clientY-rect.top)/rect.height-.5;
       const rotateY=px*maxTilt*2;
       const rotateX=-py*maxTilt*2;
-      heroVisual.style.transform=`perspective(900px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateZ(6px)`;
+      el.style.transform=`perspective(800px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateZ(4px)`;
     });
-    heroVisual.addEventListener('pointerleave',()=>{
-      heroVisual.style.transform='';
-    });
+    el.addEventListener('pointerleave',()=>{el.style.transform=''});
+  }
+
+  if(!reduceMotion&&pointerFine){
+    if(heroVisual)applyTilt(heroVisual,9);
+    document.querySelectorAll('.kpi,.insightCard').forEach(el=>applyTilt(el,5));
+  }
+
+  const heroSection=document.querySelector('.hero');
+  if(heroSection&&!reduceMotion){
+    let parallaxTicking=false;
+    const updateParallax=()=>{
+      parallaxTicking=false;
+      const rect=heroSection.getBoundingClientRect();
+      const progress=Math.min(1,Math.max(0,-rect.top/(rect.height||1)));
+      heroSection.style.setProperty('--parallaxGlow',`${(progress*70).toFixed(1)}px`);
+      heroSection.style.setProperty('--parallaxCar',`${(progress*34).toFixed(1)}px`);
+    };
+    window.addEventListener('scroll',()=>{if(!parallaxTicking){parallaxTicking=true;requestAnimationFrame(updateParallax)}},{passive:true});
+    updateParallax();
   }
 
   const updateHeader=()=>header?.classList.toggle('is-scrolled',window.scrollY>18);
@@ -51,6 +69,7 @@
 
   document.querySelectorAll('.sectionHead,.selectCard,.infobar,.premissas,.notes,.mini,.contact,.legalPanel').forEach(el=>el.dataset.reveal='');
   observeReveal();
+  document.querySelectorAll('.selectCard').forEach((el,index)=>{el.style.transitionDelay=`${index*90}ms`});
 
   function syncSelectedCards(changedSelect){
     selectors?.querySelectorAll('.selectCard').forEach(card=>{
