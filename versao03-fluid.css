@@ -538,20 +538,7 @@ input:checked+.slider:before{transform:translateX(2.8em) rotate(360deg)}
 .layout04 .darkModeToggle{display:flex;align-items:center;gap:10px;margin-right:4px}
 .layout04 .darkModeLabel{font-size:12px;font-weight:750;color:var(--l3-ink);white-space:nowrap}
 
-/* Modo escuro — fundo preto absoluto + tipografia com borda branca */
+/* Modo escuro — apenas o fundo da página muda para preto absoluto; demais cores e contornos seguem iguais ao modo claro */
 body.dark-mode{background:#000}
-body.dark-mode .darkModeLabel{color:#fff}
-body.dark-mode :where(
-  .topbar,.mainnav,.hero,.compareSection,.selectCard,.insightCard,.kpi,
-  .infobar,.premissas,.notes,.mini,.contact,.legalPanel,.tableWrap,table,
-  thead,tbody,tr,td,th,.stackTrack,.chartTrack,.regionalMeta,.maintenanceNotes,
-  .dataTransparencyPanel,.modelPickerPanel,.modelPickerList,.siteFooter,
-  .stickyCompare,.visualInsights,.dataVariability,.dataSeal,.shareBtn,.shareToast
-){background:#000!important;border-color:rgba(255,255,255,.22)!important;box-shadow:none!important}
-body.dark-mode :where(.selectCard,.insightCard,.kpi,.premissas,.notes,.mini,.contact,.legalPanel,.tableWrap,.dataTransparencyPanel,.modelPickerPanel){outline:1px solid rgba(255,255,255,.18)}
-body.dark-mode .kpi:first-child{background:linear-gradient(135deg,#000,#0b7045)!important}
-body.dark-mode select,body.dark-mode input{background:#000!important;color:#fff!important;border-color:rgba(255,255,255,.3)!important}
-body.dark-mode *{-webkit-text-stroke:.55px #fff;text-shadow:0 0 0 #fff}
-body.dark-mode svg :where(path,circle,ellipse,rect){stroke:#fff}
 @media(prefers-reduced-motion:no-preference){body{transition:background .3s ease}}
 
