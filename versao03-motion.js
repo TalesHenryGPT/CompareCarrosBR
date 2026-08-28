@@ -512,12 +512,16 @@
 
     function clearColumnHoverStyles(){
       table.querySelectorAll('.col-hover,.col-recede').forEach(cell=>cell.classList.remove('col-hover','col-recede'));
+      lastHoverColumnIndex=null;
     }
-    table.addEventListener('pointerover',event=>{
+    let lastHoverColumnIndex=null;
+    table.addEventListener('pointermove',event=>{
       if(columnDrag||nativeDrag||document.body.classList.contains('column-reordering'))return;
       const cell=event.target.closest('th,td');
-      if(!cell||!table.contains(cell)||cell.cellIndex===0)return;
+      if(!cell||!table.contains(cell)||cell.cellIndex===0){if(lastHoverColumnIndex!==null)clearColumnHoverStyles();return}
+      if(cell.cellIndex===lastHoverColumnIndex)return;
       clearColumnHoverStyles();
+      lastHoverColumnIndex=cell.cellIndex;
       cellsForColumn(table,cell.cellIndex).forEach(item=>item.classList.add('col-hover'));
       const headRow=table.tHead.rows[0];
       [...headRow.cells].forEach((headCell,index)=>{
@@ -526,6 +530,7 @@
       });
     });
     table.addEventListener('pointerleave',()=>{if(!columnDrag&&!nativeDrag)clearColumnHoverStyles()});
+    window.addEventListener('scroll',()=>{if(!columnDrag&&!nativeDrag)clearColumnHoverStyles()},{passive:true});
 
   }
 

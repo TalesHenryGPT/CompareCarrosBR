@@ -335,13 +335,13 @@ body.layout04{
 }
 .layout04 .tablewrap thead th:not(:first-child){
   border:1px solid rgba(217,255,109,.2);border-bottom-color:rgba(255,255,255,.08);border-radius:20px 20px 0 0;
-  background:linear-gradient(135deg,rgba(5,47,35,.74),rgba(8,116,67,.56));color:rgba(255,255,255,.96);
-  box-shadow:8px 0 22px rgba(6,58,41,.08),-8px 0 22px rgba(6,58,41,.06),inset 0 1px 0 rgba(255,255,255,.08)
+  background:linear-gradient(135deg,rgba(4,31,23,.94),rgba(6,58,41,.88));color:rgba(255,255,255,.96);
+  box-shadow:8px 0 22px rgba(6,58,41,.12),-8px 0 22px rgba(6,58,41,.1),inset 0 1px 0 rgba(255,255,255,.08)
 }
 .layout04 .tablewrap tbody td:not(:first-child){
   border-right:1px solid rgba(217,255,109,.12);border-bottom:1px solid rgba(255,255,255,.075);border-left:1px solid rgba(217,255,109,.12);
-  background:linear-gradient(135deg,rgba(5,47,35,.62),rgba(8,116,67,.46));color:rgba(255,255,255,.9);
-  box-shadow:8px 0 22px rgba(6,58,41,.055),-8px 0 22px rgba(6,58,41,.04)
+  background:linear-gradient(135deg,rgba(4,31,23,.88),rgba(6,58,41,.82));color:rgba(255,255,255,.94);
+  box-shadow:8px 0 22px rgba(6,58,41,.09),-8px 0 22px rgba(6,58,41,.07)
 }
 .layout04 .tablewrap tbody tr:last-child td:not(:first-child){
   border-bottom:1px solid rgba(217,255,109,.16);border-radius:0 0 20px 20px;
@@ -354,7 +354,7 @@ body.layout04{
 .layout04 .tablewrap tbody tr:last-child td:first-child{border-radius:0 0 18px 18px}
 .layout04 .tablewrap tbody tr{transition:opacity .5s ease,transform .5s ease}
 .layout04 .tablewrap tbody tr:hover td:first-child{background:#f4f7f1}
-.layout04 .tablewrap tbody tr:hover td:not(:first-child){background:linear-gradient(135deg,rgba(5,47,35,.76),rgba(8,116,67,.6));color:#fff}
+.layout04 .tablewrap tbody tr:hover td:not(:first-child){background:linear-gradient(135deg,rgba(4,31,23,.94),rgba(6,58,41,.9));color:#fff}
 .layout04 .tablewrap tbody tr.row-motion{opacity:0;transform:translateY(12px)}
 .layout04 .tablewrap tbody tr.row-motion.is-visible{opacity:1;transform:none}
 .layout04 .tablewrap td:not(:first-child) .tag{background:rgba(217,255,109,.92);color:var(--l3-deep)}
@@ -502,13 +502,23 @@ body.column-reordering{
 }
 .layout04 .tablewrap .col-hover{
   z-index:6;
+  background:linear-gradient(135deg,var(--l3-deep),#0b7045)!important;
+  color:#fff!important;
+  overflow:hidden;
   box-shadow:0 14px 26px rgba(6,58,41,.32),inset 0 0 0 2px rgba(217,255,109,.55)!important;
+}
+.layout04 .tablewrap .col-hover::after{
+  content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;
+  background:linear-gradient(115deg,transparent,rgba(255,255,255,.55),transparent);
+  transform:skewX(-20deg);opacity:0;pointer-events:none;z-index:1;
+  animation:carIconShine 4.5s ease-in-out infinite;
 }
 .layout04 .tablewrap thead th.col-hover{box-shadow:0 14px 26px rgba(6,58,41,.36),inset 0 0 0 2px rgba(217,255,109,.65)!important}
 .layout04 .tablewrap .col-recede{
   opacity:.72;
 }
 @media(hover:none){.layout04 .tablewrap .col-hover,.layout04 .tablewrap .col-recede{opacity:1}}
+@media(prefers-reduced-motion:reduce){.layout04 .tablewrap .col-hover::after{animation:none;opacity:0}}
 
 /* Hover por linha de parâmetro — brilho percorrendo, sem deslocar a célula */
 .layout04 .tablewrap tbody tr{position:relative}
