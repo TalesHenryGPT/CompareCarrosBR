@@ -424,14 +424,25 @@
 
   function reorderColumn(table,fromIndex,toIndex,after){
     if(fromIndex===toIndex&&!after)return;
+    const movedCells=[];
     [...table.rows].forEach(row=>{
       const source=row.cells[fromIndex];
       const target=row.cells[toIndex];
       if(!source||!target)return;
       row.insertBefore(source,after?target.nextSibling:target);
+      movedCells.push(source);
     });
     updateColumnOrder(table);
     refreshStickyAfterReorder(table);
+    movedCells.forEach(cell=>cell.classList.add('column-settling'));
+    void table.offsetHeight;
+    requestAnimationFrame(()=>{
+      movedCells.forEach(cell=>{
+        cell.classList.remove('column-settling');
+        cell.classList.add('column-settle-in');
+      });
+      setTimeout(()=>movedCells.forEach(cell=>cell.classList.remove('column-settle-in')),480);
+    });
   }
 
   function attachColumnReorder(table){
