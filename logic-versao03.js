@@ -85,3 +85,47 @@ function render(){
 uf.innerHTML=Object.entries(REGIONAL_DB.states).map(([code,name])=>`<option value='${code}'>${name} (${code})</option>`).join('');uf.value='MG';tariffFlag.innerHTML=Object.entries(REGIONAL_DB.energyFlags).map(([code,item])=>`<option value='${code}'>${item.label}</option>`).join('');tariffFlag.value=REGIONAL_DB.currentFlag;refreshSelectors();$('catalogCount').textContent=cars.length;updateState();
 $('compare').onclick=render;[weekly,years,energy,gas,ethanol,ipvaRate,localPurchase].forEach(input=>input.addEventListener('change',()=>{showRegionalMeta();render()}));mode.addEventListener('change',()=>{refreshSelectors();render()});uf.addEventListener('change',updateState);utility.addEventListener('change',updateEnergy);tariffFlag.addEventListener('change',updateEnergy);sel.addEventListener('change',e=>{if(e.target.matches('select')){const picker=e.target.nextElementSibling;if(picker?.classList.contains('modelPicker'))syncModelPicker(picker);render()}});render();
 
+function buildShareUrl(){
+  const params=new URLSearchParams();
+  [...sel.querySelectorAll('select')].forEach((s,i)=>{if(s.value!=='')params.set('c'+(i+1),s.value)});
+  params.set('mode',mode.value);params.set('uf',uf.value);params.set('util',utility.value);params.set('flag',tariffFlag.value);params.set('local',localPurchase.value);
+  params.set('sem',weekly.value);params.set('anos',years.value);params.set('en',energy.value);params.set('gas',gas.value);params.set('eth',ethanol.value);params.set('ipva',ipvaRate.value);
+  const url=new URL(location.href);url.search=params.toString();url.hash='comparar';return url.toString();
+}
+function showShareToast(message){
+  const toast=$('shareToast');if(!toast)return;
+  toast.textContent=message;toast.classList.add('is-visible');
+  clearTimeout(toast._timer);toast._timer=setTimeout(()=>toast.classList.remove('is-visible'),3200);
+}
+async function shareComparison(){
+  const chosen=[...sel.querySelectorAll('select')].filter(s=>s.value!=='').map(s=>cars[Number(s.value)]);
+  if(!chosen.length){showShareToast('Escolha ao menos um carro para compartilhar.');return}
+  const url=buildShareUrl(),names=chosen.map(c=>`${c.brand} ${c.model}`).join(' vs. '),shareData={title:'Comparação de carros — CompareCarrosBR',text:`Comparei ${names} no CompareCarrosBR. Confira:`,url};
+  if(navigator.share){try{await navigator.share(shareData);return}catch(err){if(err?.name==='AbortError')return}}
+  try{await navigator.clipboard.writeText(url);showShareToast('Link copiado! Cole onde quiser compartilhar.')}
+  catch{showShareToast('Não foi possível copiar automaticamente. Copie o link da barra de endereço.')}
+}
+$('shareComparison')?.addEventListener('click',shareComparison);
+
+function restoreFromShareLink(){
+  const params=new URLSearchParams(location.search);
+  if(![...params.keys()].length)return;
+  if(params.has('mode')&&['CPF','CNPJ','PcD'].includes(params.get('mode'))){mode.value=params.get('mode');refreshSelectors()}
+  if(params.has('uf')&&REGIONAL_DB.states[params.get('uf')]){uf.value=params.get('uf');updateState()}
+  if(params.has('util'))utility.value=params.get('util');
+  if(params.has('flag')&&REGIONAL_DB.energyFlags[params.get('flag')])tariffFlag.value=params.get('flag');
+  if(params.has('local'))localPurchase.value=params.get('local');
+  if(params.has('sem'))weekly.value=params.get('sem');
+  if(params.has('anos'))years.value=params.get('anos');
+  if(params.has('gas'))gas.value=params.get('gas');
+  if(params.has('eth'))ethanol.value=params.get('eth');
+  if(params.has('ipva'))ipvaRate.value=params.get('ipva');
+  if(params.has('en'))energy.value=params.get('en');
+  const selects=[...sel.querySelectorAll('select')];
+  selects.forEach((s,i)=>{const key='c'+(i+1);if(params.has(key)&&cars[Number(params.get(key))])s.value=params.get(key)});
+  installModelPickers();showRegionalMeta();render();
+  document.getElementById('comparar')?.scrollIntoView({behavior:'auto',block:'start'});
+}
+restoreFromShareLink();
+
+
