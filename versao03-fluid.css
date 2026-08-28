@@ -494,13 +494,13 @@ body.column-reordering{
   transition:background-color .28s ease,color .28s ease,box-shadow .28s ease,transform .38s cubic-bezier(.16,.8,.24,1),opacity .38s ease;
 }
 .layout04 .tablewrap .col-hover{
-  transform:translateY(-9px) scale(1.025);
+  transform:translateY(-9px) scaleX(1.025);
   z-index:6;
   box-shadow:0 20px 34px rgba(6,58,41,.28),0 0 0 1px rgba(217,255,109,.5)!important;
 }
 .layout04 .tablewrap thead th.col-hover{box-shadow:0 20px 34px rgba(6,58,41,.32),0 0 0 1px rgba(217,255,109,.6)!important}
 .layout04 .tablewrap .col-recede{
-  transform:scale(.975);
+  transform:scaleX(.975);
   opacity:.72;
 }
 @media(hover:none){.layout04 .tablewrap .col-hover,.layout04 .tablewrap .col-recede{transform:none;opacity:1}}
