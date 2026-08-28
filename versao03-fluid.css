@@ -578,6 +578,24 @@ body.column-reordering{
 .dataTransparencyPanel{margin:28px 0;padding:0;border:1px solid rgba(5,47,35,.14);border-radius:22px;background:rgba(255,255,255,.72);box-shadow:0 14px 34px rgba(5,47,35,.07)}
 .dataTransparencyPanel summary{cursor:pointer;padding:18px 20px;color:#063d2b;font-weight:850;list-style:none}.dataTransparencyPanel summary::-webkit-details-marker{display:none}.dataTransparencyPanel summary span{margin-left:8px;color:#698074;font-size:.82em;font-weight:650}.dataTransparencyBody{padding:0 20px 20px;color:#385447;font-size:.9rem;line-height:1.55}.dataSealRow{display:flex;flex-wrap:wrap;align-items:center;gap:7px 9px;padding:14px 0;border-top:1px solid rgba(5,47,35,.1);border-bottom:1px solid rgba(5,47,35,.1)}.dataSeal{display:inline-flex;align-items:center;padding:3px 8px;border-radius:999px;font-size:.72rem;font-weight:850;white-space:nowrap}.dataSeal.official{background:#d8f5df;color:#075b2b}.dataSeal.estimate{background:#fff1be;color:#785d00}.dataSeal.unavailable{background:#edf0ef;color:#637068}.dataTransparencyBody dl{display:grid;grid-template-columns:minmax(150px,.7fr) 2fr;gap:10px 18px;margin:18px 0}.dataTransparencyBody dt{font-weight:800;color:#173f30}.dataTransparencyBody dd{margin:0}.dataTransparencyBody h3{font-size:1rem;margin:18px 0 6px}.dataTransparencyBody ul{margin:0;padding-left:18px}.dataVariability{margin:18px 0 0;padding:12px 14px;border-radius:13px;background:rgba(255,212,59,.16);color:#5f5000}@media(max-width:680px){.dataTransparencyBody dl{grid-template-columns:1fr}.dataTransparencyPanel summary span{display:block;margin:4px 0 0}.dataSealRow{align-items:flex-start}}
 
+/* Botão "voltar ao início" — componente Uiverse.io by vinodjangid07 */
+.layout04 .backToSelectorWrap{display:flex;justify-content:center;margin:36px 0}
+.layout04 .backToSelectorBtn{
+  width:50px;height:50px;padding:0;margin:0;border-radius:50%;background:rgb(20,20,20);border:none;font-weight:600;
+  display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px rgba(180,160,255,.253);
+  cursor:pointer;transition-duration:.3s;overflow:hidden;position:relative;
+}
+.layout04 .backToSelectorBtn .svgIcon{width:12px;transition-duration:.3s}
+.layout04 .backToSelectorBtn .svgIcon path{fill:#fff}
+.layout04 .backToSelectorBtn:hover{width:170px;border-radius:50px;transition-duration:.3s;background:rgb(181,160,255);transform:none;box-shadow:0 0 0 4px rgba(180,160,255,.253)}
+.layout04 .backToSelectorBtn:hover .svgIcon{transition-duration:.3s;transform:translateY(-200%)}
+.layout04 .backToSelectorBtn::before{
+  position:absolute;bottom:-20px;content:"Voltar ao Início";color:#fff;font-size:0;white-space:nowrap;font-family:var(--l3-body);
+}
+.layout04 .backToSelectorBtn:hover::before{font-size:13px;opacity:1;bottom:unset;transition-duration:.3s}
+@media(prefers-reduced-motion:reduce){.layout04 .backToSelectorBtn,.layout04 .backToSelectorBtn *{transition:none}}
+
+
 
 /* Chave de modo escuro — componente Uiverse.io by Praashoo7 */
 .switch{font-size:17px;position:relative;display:inline-block;width:3.5em;height:2em;flex:none}

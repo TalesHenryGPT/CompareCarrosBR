@@ -10,6 +10,10 @@
 
   body.classList.add('motion-ready');
 
+  document.getElementById('backToSelector')?.addEventListener('click',()=>{
+    document.getElementById('selectors')?.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'start'});
+  });
+
   const darkSwitch=document.getElementById('darkModeSwitch');
   const darkLabel=document.getElementById('darkModeLabel');
   function applyDarkMode(isDark){
