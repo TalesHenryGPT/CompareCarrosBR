@@ -493,26 +493,23 @@ body.column-reordering{
   user-select:none;
   cursor:grabbing;
 }
-/* Hover por coluna — efeito de "carta" se levantando, as demais recuam sutilmente */
+/* Hover por coluna — efeito de "carta" em destaque (sem deslocar a célula, para não conflitar com o hover do mouse) */
 .layout04 .tablewrap th:not(:first-child),.layout04 .tablewrap td:not(:first-child){
   position:relative;
-  transition:background-color .28s ease,color .28s ease,box-shadow .28s ease,transform .38s cubic-bezier(.16,.8,.24,1),opacity .38s ease;
+  transition:background-color .28s ease,color .28s ease,box-shadow .28s ease,opacity .38s ease;
 }
 .layout04 .tablewrap .col-hover{
-  transform:translateY(-9px) scaleX(1.025);
   z-index:6;
-  box-shadow:0 20px 34px rgba(6,58,41,.28),0 0 0 1px rgba(217,255,109,.5)!important;
+  box-shadow:0 14px 26px rgba(6,58,41,.32),inset 0 0 0 2px rgba(217,255,109,.55)!important;
 }
-.layout04 .tablewrap thead th.col-hover{box-shadow:0 20px 34px rgba(6,58,41,.32),0 0 0 1px rgba(217,255,109,.6)!important}
+.layout04 .tablewrap thead th.col-hover{box-shadow:0 14px 26px rgba(6,58,41,.36),inset 0 0 0 2px rgba(217,255,109,.65)!important}
 .layout04 .tablewrap .col-recede{
-  transform:scaleX(.975);
   opacity:.72;
 }
-@media(hover:none){.layout04 .tablewrap .col-hover,.layout04 .tablewrap .col-recede{transform:none;opacity:1}}
+@media(hover:none){.layout04 .tablewrap .col-hover,.layout04 .tablewrap .col-recede{opacity:1}}
 
-/* Hover por linha de parâmetro — reforça com leve elevação e brilho percorrendo */
+/* Hover por linha de parâmetro — brilho percorrendo, sem deslocar a célula */
 .layout04 .tablewrap tbody tr{position:relative}
-.layout04 .tablewrap tbody tr:hover td:not(:first-child){transform:translateY(-2px)}
 .layout04 .tablewrap tbody tr td:not(:first-child)::after{
   content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
   background:linear-gradient(100deg,transparent 30%,rgba(217,255,109,.22) 50%,transparent 70%);
@@ -521,12 +518,11 @@ body.column-reordering{
 .layout04 .tablewrap tbody tr:hover td:not(:first-child)::after{opacity:1;animation:l3RowShine 1.1s ease-out}
 @keyframes l3RowShine{from{background-position:120% 0}to{background-position:-20% 0}}
 
-/* Reforço "carta" no arrasto ativo */
+/* Reforço "carta" no arrasto ativo (não é reativo a hover contínuo, então não sofre o mesmo risco de oscilação) */
 .layout04 .tablewrap .column-dragging{transform:scale(1.03) rotate(-.6deg)!important;box-shadow:0 24px 40px rgba(6,58,41,.3)!important}
 .layout04 .tablewrap .column-drag-target{animation:l3DragTargetPulse 1s ease-in-out infinite}
 @keyframes l3DragTargetPulse{0%,100%{box-shadow:inset 0 0 0 2px rgba(255,212,59,.98),0 0 0 2px rgba(255,212,59,.18)!important}50%{box-shadow:inset 0 0 0 2px rgba(255,212,59,.98),0 0 22px 4px rgba(255,212,59,.4)!important}}
 @media(prefers-reduced-motion:reduce){
-  .layout04 .tablewrap .col-hover,.layout04 .tablewrap .col-recede,.layout04 .tablewrap tbody tr:hover td:not(:first-child){transform:none}
   .layout04 .tablewrap tbody tr td:not(:first-child)::after{display:none}
   .layout04 .tablewrap .column-dragging{transform:none!important}
   .layout04 .tablewrap .column-drag-target{animation:none}
