@@ -10,6 +10,20 @@
 
   body.classList.add('motion-ready');
 
+  const darkSwitch=document.getElementById('darkModeSwitch');
+  const darkLabel=document.getElementById('darkModeLabel');
+  function applyDarkMode(isDark){
+    body.classList.toggle('dark-mode',isDark);
+    if(darkLabel)darkLabel.textContent=isDark?'Modo Claro':'Modo Escuro';
+    if(darkSwitch)darkSwitch.checked=isDark;
+  }
+  const savedDarkMode=localStorage.getItem('cc-dark-mode')==='1';
+  applyDarkMode(savedDarkMode);
+  darkSwitch?.addEventListener('change',()=>{
+    applyDarkMode(darkSwitch.checked);
+    localStorage.setItem('cc-dark-mode',darkSwitch.checked?'1':'0');
+  });
+
   function splitHeadlineWords(el){
     if(!el||el.dataset.split)return;
     el.dataset.split='true';
