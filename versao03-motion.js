@@ -446,6 +446,7 @@
         if(Math.hypot(event.clientX-columnDrag.startX,event.clientY-columnDrag.startY)<8)return;
         columnDrag.started=true;
         document.body.classList.add('column-reordering');
+        clearColumnHoverStyles();
         cellsForColumn(table,columnDrag.fromIndex).forEach(cell=>cell.classList.add('column-dragging'));
         const hint=createElement('div','comparisonColumnDragHint',columnDrag.name);
         document.body.append(hint);
@@ -508,6 +509,23 @@
       if(from!==to)reorderColumn(table,from,to,after);
     });
     table.addEventListener('dragend',()=>{nativeDrag=null;clearColumnDragStyles();});
+
+    function clearColumnHoverStyles(){
+      table.querySelectorAll('.col-hover,.col-recede').forEach(cell=>cell.classList.remove('col-hover','col-recede'));
+    }
+    table.addEventListener('pointerover',event=>{
+      if(columnDrag||nativeDrag||document.body.classList.contains('column-reordering'))return;
+      const cell=event.target.closest('th,td');
+      if(!cell||!table.contains(cell)||cell.cellIndex===0)return;
+      clearColumnHoverStyles();
+      cellsForColumn(table,cell.cellIndex).forEach(item=>item.classList.add('col-hover'));
+      const headRow=table.tHead.rows[0];
+      [...headRow.cells].forEach((headCell,index)=>{
+        if(index===0||index===cell.cellIndex)return;
+        cellsForColumn(table,index).forEach(item=>item.classList.add('col-recede'));
+      });
+    });
+    table.addEventListener('pointerleave',()=>{if(!columnDrag&&!nativeDrag)clearColumnHoverStyles()});
 
   }
 
