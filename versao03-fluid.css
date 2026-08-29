@@ -75,7 +75,7 @@ body.layout04{
 .layout04 main{max-width:1540px;padding:20px 22px 68px}
 .layout04 .hero{
   position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1.02fr) minmax(440px,.98fr);
-  min-height:610px;overflow:hidden;border:0;border-radius:36px;
+  min-height:460px;overflow:hidden;border:0;border-radius:36px;
   background:linear-gradient(135deg,#052f23 0%,#075237 58%,#087443 100%);
   box-shadow:0 32px 80px rgba(6,58,41,.2);
 }
@@ -401,7 +401,7 @@ body.layout04{
 @media(max-width:1150px){
   .layout04 .navwrap{flex-wrap:wrap}
   .layout04 .mainnav{display:flex;order:3;width:100%;justify-content:center;overflow-x:auto}
-  .layout04 .hero{grid-template-columns:1fr minmax(360px,.8fr);min-height:560px}
+  .layout04 .hero{grid-template-columns:1fr minmax(360px,.8fr);min-height:420px}
   .layout04 .heroContent{padding:54px 22px 54px 52px}
   .layout04 .hero h1{font-size:clamp(44px,6vw,68px)}
     .layout04 .visualInsights{grid-template-columns:1fr}
