@@ -84,6 +84,50 @@
     updateParallax();
   }
 
+  const heroCarFly=document.querySelector('.heroCarFly');
+  if(heroCarFly){
+    const heroVisualEl=document.querySelector('.heroVisual');
+    const targetHeading=document.querySelector('#comparar .sectionHead h1');
+    let startX=0,startY=0,endX=0,endY=0,measured=false;
+    function measureFlightPath(){
+      if(!heroVisualEl||!targetHeading)return;
+      const hv=heroVisualEl.getBoundingClientRect();
+      const tg=targetHeading.getBoundingClientRect();
+      const docScrollX=window.scrollX,docScrollY=window.scrollY;
+      const carWidth=Math.max(220,Math.min(380,hv.width*0.56));
+      heroCarFly.style.width=`${carWidth}px`;
+      startX=hv.left+docScrollX+hv.width*0.52;
+      startY=hv.top+docScrollY+hv.height*0.14;
+      endX=tg.left+docScrollX+tg.width*0.18-carWidth*0.5;
+      endY=tg.top+docScrollY-carWidth*0.12;
+      heroCarFly.style.left=`${startX}px`;
+      heroCarFly.style.top=`${startY}px`;
+      measured=true;
+      requestAnimationFrame(()=>heroCarFly.classList.add('is-armed'));
+    }
+    if(reduceMotion){
+      measureFlightPath();
+      heroCarFly.style.opacity='1';
+    }else{
+      let flyTicking=false;
+      const updateFlight=()=>{
+        flyTicking=false;
+        if(!measured)return;
+        const travel=Math.max(1,(endY-startY)*1.7);
+        const progress=Math.min(1,Math.max(0,window.scrollY/travel));
+        const dx=(endX-startX)*progress;
+        const dy=(endY-startY)*progress;
+        const scale=1-progress*0.42;
+        const opacity=progress<0.82?1:Math.max(0,1-((progress-0.82)/0.18));
+        heroCarFly.style.transform=`translate3d(${dx.toFixed(1)}px,${dy.toFixed(1)}px,0) scale(${scale.toFixed(3)})`;
+        heroCarFly.style.opacity=opacity.toFixed(2);
+      };
+      window.addEventListener('scroll',()=>{if(!flyTicking){flyTicking=true;requestAnimationFrame(updateFlight)}},{passive:true});
+      window.addEventListener('resize',()=>{measureFlightPath();updateFlight()},{passive:true});
+      requestAnimationFrame(()=>{measureFlightPath();updateFlight()});
+    }
+  }
+
   const updateHeader=()=>header?.classList.toggle('is-scrolled',window.scrollY>18);
   window.addEventListener('scroll',updateHeader,{passive:true});
   updateHeader();
