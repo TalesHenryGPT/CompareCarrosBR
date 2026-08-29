@@ -106,8 +106,6 @@ body.layout04{
 @keyframes heroPrimaryGlow{0%,100%{box-shadow:0 14px 32px rgba(0,0,0,.15),0 0 0 rgba(217,255,109,0)}50%{box-shadow:0 14px 32px rgba(0,0,0,.15),0 0 22px rgba(217,255,109,.55)}}
 @media(prefers-reduced-motion:reduce){.layout04 .heroPrimary{animation:none}.layout04 .heroPrimary::after{display:none}}
 
-.layout04 .heroVisual{position:relative;display:grid;place-items:center;min-height:100%;padding:52px 44px 52px 8px;transform-style:preserve-3d;will-change:transform;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
-
 /* Badges — agora estáticos, empilhados no canto inferior direito do banner */
 .layout04 .heroBadgesStack{
   position:absolute;right:6%;bottom:7%;z-index:3;
@@ -133,13 +131,6 @@ body.layout04{
   .layout04 .heroCarFlyBob{animation:none}
 }
 
-.layout04 .visualShell{
-  position:relative;width:min(100%,620px);aspect-ratio:1.05;border:1px solid rgba(255,255,255,.2);border-radius:48% 32% 43% 34%/38% 44% 34% 49%;
-  background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.055));
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 40px 90px rgba(0,0,0,.18);backdrop-filter:blur(8px);
-  animation:l3Morph 10s ease-in-out infinite alternate;
-}
-.layout04 .visualGrid{position:absolute;inset:10%;opacity:.22;background-image:linear-gradient(rgba(255,255,255,.2) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.2) 1px,transparent 1px);background-size:38px 38px;mask-image:radial-gradient(circle,#000 35%,transparent 75%)}
 .layout04 .roadPulse{position:absolute;z-index:1;left:14%;right:8%;bottom:23%;height:3px;border-radius:999px;background:linear-gradient(90deg,transparent,var(--l3-yellow),transparent);filter:drop-shadow(0 0 10px var(--l3-yellow));animation:l3Road 2.6s ease-in-out infinite}
 .layout04 .floatMetric{
   position:absolute;z-index:3;min-width:170px;padding:15px 17px;border:1px solid rgba(255,255,255,.24);border-radius:19px;
@@ -392,7 +383,6 @@ body.layout04{
 .motion-ready [data-reveal].is-visible{opacity:1;transform:none}
 
 @keyframes l3Glow{to{transform:translate(-40px,45px) scale(1.08)}}
-@keyframes l3Morph{0%{border-radius:48% 32% 43% 34%/38% 44% 34% 49%;transform:rotate(-1deg)}100%{border-radius:36% 48% 34% 46%/46% 34% 50% 36%;transform:rotate(1.5deg)}}
 @keyframes l3Float{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-13px) rotate(1deg)}}
 @keyframes l3Road{0%,100%{opacity:.42;transform:scaleX(.75)}50%{opacity:1;transform:scaleX(1)}}
 @keyframes l3Winner{50%{transform:translate(-12px,12px) scale(1.12);opacity:.58}}
@@ -406,8 +396,7 @@ body.layout04{
   .layout04 .hero{grid-template-columns:1fr minmax(360px,.8fr);min-height:560px}
   .layout04 .heroContent{padding:54px 22px 54px 52px}
   .layout04 .hero h1{font-size:clamp(44px,6vw,68px)}
-  .layout04 .heroVisual{padding-right:28px}
-  .layout04 .visualInsights{grid-template-columns:1fr}
+    .layout04 .visualInsights{grid-template-columns:1fr}
 }
 @media(max-width:820px){
   html{scroll-padding-top:150px}
@@ -415,9 +404,7 @@ body.layout04{
   .layout04 .hero{grid-template-columns:1fr;min-height:auto;border-radius:28px}
   .layout04 .heroContent{padding:56px 28px 22px}
   .layout04 .hero h1{font-size:clamp(43px,11vw,65px)}
-  .layout04 .heroVisual{min-height:420px;padding:18px 34px 38px}
-  .layout04 .visualShell{max-width:510px}
-  .layout04 .compareSection{padding:70px 2px 0}
+    .layout04 .compareSection{padding:70px 2px 0}
   .layout04 .selectors{grid-template-columns:1fr 1fr}
   .layout04 .legalPanel{grid-template-columns:1fr;gap:28px;padding:28px}
 }
@@ -432,9 +419,7 @@ body.layout04{
   .layout04 .heroContent{padding:44px 22px 16px}
   .layout04 .heroLead{font-size:16px}
   .layout04 .heroPrimary,.layout04 .heroSecondary{width:100%}
-  .layout04 .heroVisual{min-height:330px;padding:8px 24px 32px}
-  .layout04 .visualShell{border-radius:30px!important;animation:none}
-  .layout04 .floatMetric{min-width:132px;padding:12px}.layout04 .floatMetric strong{font-size:15px}
+    .layout04 .floatMetric{min-width:132px;padding:12px}.layout04 .floatMetric strong{font-size:15px}
   
   .layout04 .sectionHead h1{font-size:24px}
   .layout04 .selectors{grid-template-columns:1fr}
@@ -554,11 +539,9 @@ body.column-reordering{
 .layout04 .heroLead{margin-top:13px;font-size:clamp(12px,.73vw,16px);line-height:1.45}
 .layout04 .heroActions{gap:6px;margin-top:17px}
 .layout04 .heroPrimary,.layout04 .heroSecondary{min-height:28px;padding:0 11px;font-size:11px}
-.layout04 .heroVisual{padding:26px 22px 26px 4px}
-.layout04 .visualShell{width:min(100%,310px);border-radius:48% 32% 43% 34%/38% 44% 34% 49%}
 .layout04 .floatMetric{min-width:85px;padding:8px 9px;border-radius:10px;font-size:.5em}
-@media(max-width:900px){.layout04 .hero{min-height:auto}.layout04 .heroVisual{min-height:210px;padding:9px 17px 19px}.layout04 .visualShell{width:min(100%,260px)} }
-@media(max-width:620px){.layout04 .heroVisual{min-height:165px;padding:4px 12px 16px}.layout04 .visualShell{width:min(100%,205px)}.layout04 .heroContent{padding:24px}.layout04 .hero h1{font-size:30px}}
+@media(max-width:900px){.layout04 .hero{min-height:auto}}
+@media(max-width:620px){.layout04 .heroContent{padding:24px}.layout04 .hero h1{font-size:30px}}
 
 
 /* Transparência de dados */

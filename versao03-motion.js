@@ -50,7 +50,6 @@
   }
   if(!reduceMotion)splitHeadlineWords(document.querySelector('#comparar .sectionHead h1'));
 
-  const heroVisual = document.querySelector('.heroVisual');
   const pointerFine=window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   function applyTilt(el,maxTilt){
@@ -66,7 +65,6 @@
   }
 
   if(!reduceMotion&&pointerFine){
-    if(heroVisual)applyTilt(heroVisual,9);
     document.querySelectorAll('.kpi,.insightCard').forEach(el=>applyTilt(el,5));
   }
 
@@ -86,7 +84,7 @@
 
   const heroCarFly=document.querySelector('.heroCarFly');
   if(heroCarFly){
-    const heroVisualEl=document.querySelector('.heroVisual');
+    const heroVisualEl=document.querySelector('.hero');
     const targetHeading=document.querySelector('#comparar .sectionHead h1');
     let startX=0,startY=0,endX=0,endY=0,measured=false;
     function measureFlightPath(){
@@ -94,10 +92,10 @@
       const hv=heroVisualEl.getBoundingClientRect();
       const tg=targetHeading.getBoundingClientRect();
       const docScrollX=window.scrollX,docScrollY=window.scrollY;
-      const carWidth=Math.max(220,Math.min(380,hv.width*0.56));
+      const carWidth=Math.max(200,Math.min(300,hv.width*0.22));
       heroCarFly.style.width=`${carWidth}px`;
-      startX=hv.left+docScrollX+hv.width*0.52;
-      startY=hv.top+docScrollY+hv.height*0.14;
+      startX=hv.left+docScrollX+hv.width*0.68;
+      startY=hv.top+docScrollY+hv.height*0.08;
       endX=tg.left+docScrollX+tg.width*0.18-carWidth*0.5;
       endY=tg.top+docScrollY-carWidth*0.12;
       heroCarFly.style.left=`${startX}px`;
