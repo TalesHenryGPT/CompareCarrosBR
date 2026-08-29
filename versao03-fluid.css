@@ -99,8 +99,17 @@ body.layout04{
 .layout04 .heroPrimary:hover::after{animation:carIconShine .9s ease forwards}
 .layout04 .heroPrimary span{font-size:20px;transition:transform .25s ease}
 .layout04 .heroPrimary:hover span{transform:translateX(4px)}
-.layout04 .heroSecondary{border:1px solid rgba(255,255,255,.28);color:#fff;background:rgba(255,255,255,.06)}
-.layout04 .heroSecondary:hover{transform:translateY(-3px);background:rgba(255,255,255,.12)}
+.layout04 .heroSecondary{
+  position:relative;overflow:hidden;isolation:isolate;border-color:transparent;color:#fff;
+  background:linear-gradient(135deg,var(--l3-deep),#0b7045);box-shadow:0 14px 28px rgba(6,58,41,.28);
+}
+.layout04 .heroSecondary::before{
+  content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;
+  background:linear-gradient(115deg,transparent,rgba(255,255,255,.55),transparent);
+  transform:skewX(-20deg);opacity:0;animation:carIconShine 4.5s ease-in-out infinite;
+}
+.layout04 .heroSecondary:hover{transform:translateY(-3px);box-shadow:0 18px 34px rgba(6,58,41,.36)}
+@media(prefers-reduced-motion:reduce){.layout04 .heroSecondary::before{animation:none;opacity:0}}
 .layout04 .heroTrust{display:flex;flex-wrap:wrap;gap:8px;margin-top:32px}
 .layout04 .heroTrust span{padding:9px 12px;border:1px solid rgba(255,255,255,.15);border-radius:999px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.74);font-size:12px}
 @keyframes heroPrimaryGlow{0%,100%{box-shadow:0 14px 32px rgba(0,0,0,.15),0 0 0 rgba(217,255,109,0)}50%{box-shadow:0 14px 32px rgba(0,0,0,.15),0 0 22px rgba(217,255,109,.55)}}
