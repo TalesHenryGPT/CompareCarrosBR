@@ -115,6 +115,7 @@ body.layout04{
 .layout04 .heroPrimary:hover span{transform:translateX(4px)}
 .layout04 .heroSecondary{
   position:relative;overflow:hidden;isolation:isolate;border-color:transparent;color:#fff;
+  min-height:71px;padding:0 29px;font-size:18px;
   background:linear-gradient(135deg,var(--l3-deep),#0b7045);box-shadow:0 14px 28px rgba(6,58,41,.28);
 }
 .layout04 .heroSecondary::before{
@@ -131,28 +132,12 @@ body.layout04{
 
 /* Badges — agora estáticos, empilhados no canto inferior direito do banner */
 .layout04 .heroBadgesStack{
-  position:absolute;right:6%;bottom:7%;z-index:3;
-  display:flex;flex-direction:column;align-items:flex-end;gap:10px;
+  position:absolute;right:4px;bottom:7%;z-index:3;
+  display:flex;flex-direction:column;align-items:stretch;gap:10px;
 }
+.layout04 .heroBadgesStack .heroSecondary{justify-content:center}
 .layout04 .heroBadgesStack .floatMetric{position:static;animation:none}
 
-/* Carro — bloco independente que atravessa do banner até "Monte seu cenário", conforme o scroll */
-.layout04 .heroCarFly{
-  position:absolute;z-index:4;pointer-events:none;will-change:transform,opacity;
-  opacity:0;transform:translate3d(0,0,0) scale(.96);
-  transition:transform .16s cubic-bezier(.22,.7,.32,1),opacity .16s ease;
-}
-.layout04 .heroCarFly.is-armed{opacity:1;transform:translate3d(0,0,0) scale(1)}
-.layout04 .heroCarFlyBob{animation:heroCarIdle 6.5s ease-in-out infinite}
-.layout04 .heroCarFly img{
-  display:block;width:100%;height:auto;
-  filter:drop-shadow(0 24px 26px rgba(0,0,0,.5)) drop-shadow(0 4px 10px rgba(0,0,0,.35));
-}
-@keyframes heroCarIdle{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-8px) rotate(-.6deg)}}
-@media(prefers-reduced-motion:reduce){
-  .layout04 .heroCarFly{transition:opacity .3s ease}
-  .layout04 .heroCarFlyBob{animation:none}
-}
 
 .layout04 .roadPulse{position:absolute;z-index:1;left:14%;right:8%;bottom:23%;height:3px;border-radius:999px;background:linear-gradient(90deg,transparent,var(--l3-yellow),transparent);filter:drop-shadow(0 0 10px var(--l3-yellow));animation:l3Road 2.6s ease-in-out infinite}
 .layout04 .floatMetric{
@@ -554,7 +539,8 @@ body.column-reordering{
   letter-spacing:.01em;
 }
 
-/* Banner compacto: escala proporcional à composição original. */
+/* Banner compacto: escala proporcional à composição original (telas estreitas). */
+@media(max-width:680px){
 .layout04 .hero{min-height:305px;border-radius:24px}
 .layout04 .heroContent{padding:clamp(24px,3vw,46px);padding-right:16px}
 .layout04 .heroKicker{margin-bottom:10px;font-size:10px}
@@ -563,6 +549,7 @@ body.column-reordering{
 .layout04 .heroActions{gap:6px;margin-top:17px}
 .layout04 .heroPrimary,.layout04 .heroSecondary{min-height:28px;padding:0 11px;font-size:11px}
 .layout04 .floatMetric{min-width:85px;padding:8px 9px;border-radius:10px;font-size:.5em}
+}
 @media(max-width:900px){.layout04 .hero{min-height:auto}}
 @media(max-width:620px){.layout04 .heroContent{padding:24px}.layout04 .hero h1{font-size:30px}}
 
