@@ -52,11 +52,25 @@ body.layout04{
 .layout04 .mainnav a::after{display:none}
 .layout04 .mainnav a:hover{background:rgba(6,58,41,.06);transform:translateY(-1px)}
 .layout04 .mainnav a.active{background:var(--l3-deep);color:var(--l3-yellow)}
-.layout04 .saved{
-  margin-left:auto;border:0;border-radius:999px;background:var(--l3-yellow);color:#23311c;
-  padding:13px 18px;box-shadow:0 10px 24px rgba(197,153,0,.15);transition:transform .25s ease,box-shadow .25s ease;
+.layout04 .savedContainer{
+  margin-left:auto;position:relative;padding:3px;border-radius:.9em;overflow:hidden;isolation:isolate;
+  background:linear-gradient(135deg,var(--l3-deep),#0b7045);
+  box-shadow:0 10px 26px rgba(6,58,41,.3);transition:transform .25s ease,box-shadow .25s ease;
 }
-.layout04 .saved:hover{transform:translateY(-2px);box-shadow:0 15px 30px rgba(197,153,0,.22)}
+.layout04 .savedContainer::before{
+  content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;z-index:2;pointer-events:none;
+  background:linear-gradient(115deg,transparent,rgba(255,255,255,.6),transparent);
+  transform:skewX(-20deg);opacity:0;animation:carIconShine 3.2s ease-in-out infinite;
+}
+.layout04 .savedContainer:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(6,58,41,.4)}
+.layout04 .savedBtn{
+  position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;
+  padding:11px 20px;border-radius:.7em;border:none;
+  background:linear-gradient(135deg,var(--l3-deep),#0b7045);
+  color:var(--l3-lime);font-weight:800;font-size:15px;font-family:var(--l3-body);
+  cursor:pointer;text-decoration:none;
+}
+@media(prefers-reduced-motion:reduce){.layout04 .savedContainer::before{animation:none;opacity:0}}
 
 .layout04 main{max-width:1540px;padding:20px 22px 68px}
 .layout04 .hero{
