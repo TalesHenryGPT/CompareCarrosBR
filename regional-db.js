@@ -1,14 +1,14 @@
 const REGIONAL_DB={
-  updatedAt:'29/09/2026',
+  updatedAt:'03/10/2026',
   states:{AC:'Acre',AL:'Alagoas',AP:'Amapá',AM:'Amazonas',BA:'Bahia',CE:'Ceará',DF:'Distrito Federal',ES:'Espírito Santo',GO:'Goiás',MA:'Maranhão',MT:'Mato Grosso',MS:'Mato Grosso do Sul',MG:'Minas Gerais',PA:'Pará',PB:'Paraíba',PR:'Paraná',PE:'Pernambuco',PI:'Piauí',RJ:'Rio de Janeiro',RN:'Rio Grande do Norte',RS:'Rio Grande do Sul',RO:'Rondônia',RR:'Roraima',SC:'Santa Catarina',SP:'São Paulo',SE:'Sergipe',TO:'Tocantins'},
   sources:{
-    fuel:{label:'ANP — Levantamento de Preços de Combustíveis',url:'https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/levantamento-de-precos-de-combustiveis-ultimas-semanas-pesquisadas',reference:'20/09/2026 a 26/09/2026 — planilha publicada em 25/09/2026'},
+    fuel:{label:'ANP — Levantamento de Preços de Combustíveis',url:'https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/levantamento-de-precos-de-combustiveis-ultimas-semanas-pesquisadas',reference:'27/09/2026 a 03/10/2026 — planilha publicada em 02/10/2026'},
     energy:{label:'ANEEL — Tarifas Homologadas de Distribuidoras',url:'https://dadosabertos.aneel.gov.br/dataset/tarifas-distribuidoras-energia-eletrica',reference:'tarifas B1 residenciais convencionais — dados gerados pela ANEEL em 29/09/2026; ELFSM vigente desde 22/09/2026; republicações vigentes desde 26/08/2026 para Energisa Acre, Enel Ceará, Energisa Rondônia, Sulgipe e Energisa Tocantins'},
     flags:{label:'ANEEL — Bandeiras Tarifárias',url:'https://www.gov.br/aneel/pt-br/assuntos/noticias/2026-defeso-eleitoral/outubro-tera-bandeira-verde-contas-de-luz-sem-custo-extra',reference:'bandeira verde em outubro/2026, sem acréscimo — publicada pela ANEEL em 25/09/2026'},
     insurance:{label:'SUSEP — Base anonimizada de seguro automóvel',url:'https://www.gov.br/susep/pt-br/central-de-conteudos/dados-estatisticos/bases-anonimizadas/bases_auto',reference:'R_AUTO 2021A: prêmio de casco/valor segurado para passeio PF, indexado a MG = 1,00; cotação individual prevalece'}
   },
   fuel:{
-    AC:{gas:7.26,eth:4.84},AL:{gas:6.64,eth:4.96},AP:{gas:6.51,eth:5.81},AM:{gas:7.32,eth:5.13},BA:{gas:6.69,eth:4.51},CE:{gas:6.98,eth:5.00},DF:{gas:6.67,eth:4.41},ES:{gas:6.45,eth:4.66},GO:{gas:6.69,eth:4.39},MA:{gas:6.63,eth:4.96},MT:{gas:6.82,eth:4.11},MS:{gas:6.40,eth:3.89},MG:{gas:6.32,eth:4.22},PA:{gas:6.72,eth:4.60},PB:{gas:6.42,eth:4.57},PR:{gas:6.61,eth:4.17},PE:{gas:6.94,eth:4.98},PI:{gas:6.82,eth:4.84},RJ:{gas:6.62,eth:4.74},RN:{gas:6.84,eth:5.24},RS:{gas:6.22,eth:4.48},RO:{gas:7.42,eth:5.07},RR:{gas:7.56,eth:5.37},SC:{gas:6.44,eth:4.43},SP:{gas:6.36,eth:3.81},SE:{gas:7.01,eth:5.36},TO:{gas:6.96,eth:4.98}
+    AC:{gas:7.25,eth:4.80},AL:{gas:6.72,eth:4.96},AP:{gas:6.50,eth:5.83},AM:{gas:7.06,eth:4.99},BA:{gas:6.65,eth:4.50},CE:{gas:6.97,eth:4.99},DF:{gas:6.66,eth:4.45},ES:{gas:6.44,eth:4.73},GO:{gas:6.69,eth:4.36},MA:{gas:6.60,eth:4.86},MT:{gas:6.90,eth:4.22},MS:{gas:6.42,eth:3.98},MG:{gas:6.36,eth:4.28},PA:{gas:6.68,eth:4.59},PB:{gas:6.42,eth:4.59},PR:{gas:6.61,eth:4.19},PE:{gas:6.93,eth:4.97},PI:{gas:6.82,eth:4.85},RJ:{gas:6.62,eth:4.76},RN:{gas:6.73,eth:5.15},RS:{gas:6.24,eth:4.55},RO:{gas:7.42,eth:5.08},RR:{gas:7.56,eth:5.37},SC:{gas:6.47,eth:4.53},SP:{gas:6.36,eth:3.84},SE:{gas:6.97,eth:5.30},TO:{gas:6.95,eth:4.97}
   },
   energyFlags:{green:{label:'Verde (out/2026)',surcharge:0},yellow:{label:'Amarela',surcharge:.01885},red1:{label:'Vermelha patamar 1',surcharge:.04463},red2:{label:'Vermelha patamar 2',surcharge:.07877}},
   currentFlag:'green',
